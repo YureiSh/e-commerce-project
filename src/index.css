@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+:root {}
+
+
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+@theme {
+  --color-primary: #23A6F0;
+  --color-secondary: #252B42;
+  --color-success: #2DC071;
+  --color-danger: #E74040;
+  --color-warning: #F3CD03;
+}
+
+/*
+  width: 1126px;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  border-inline: 1px solid var(--border);
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+*/
+
+/*
+@layer components {
+  .btn-primary {
+    border-radius: calc(infinity * 1px);
+    background-color: var(--color-violet-500);
+    padding-inline: --spacing(5);
+    padding-block: --spacing(2);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-white);
+    box-shadow: var(--shadow-md);
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-violet-700);
+      }
+    }
+  }
+}
+
+or.
+
+.select2-dropdown {
+  @apply rounded-b-lg shadow-md;
+}
+*/
