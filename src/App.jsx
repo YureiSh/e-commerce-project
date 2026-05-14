@@ -8,9 +8,11 @@ import ContactPage from './pages/ContactPage';
 import TeamPage from './pages/TeamPage';
 import AboutUsPage from './pages/AboutUsPage';
 import ProductPage from './pages/ProductPage';
+import RegisterPage from './pages/auth-pages/RegisterPage';
+import LoginPage from './pages/auth-pages/LoginPage';
 
 function App() {
-  const user = useSelector((store) => store.user);
+  const user = useSelector((store) => store.client.user);
 
   return (
     <BrowserRouter>
@@ -21,6 +23,8 @@ function App() {
         <Route path="/team" component={TeamPage} />
         <Route path="/aboutus" component={AboutUsPage} />
         <Route path="/product/:id" component={ProductPage} />
+        <Route path="/signup" component={RegisterPage} />
+        <Route path="/login" component={LoginPage} />
         
       </Switch>
     </BrowserRouter>
