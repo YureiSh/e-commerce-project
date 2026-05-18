@@ -1,7 +1,7 @@
 import PageContent from "../../layout/PageContent";
 
 import { useForm } from "react-hook-form";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { logUser } from "../../store/actions/clientActions";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
@@ -10,7 +10,6 @@ function LoginPage() {
     const [rememberMe, setRememberMe] = useState(false);
     const history = useHistory();
     const dispatch = useDispatch();
-    const user = useSelector((store) => store.client.user);
 
     const { register,
         handleSubmit,
@@ -20,11 +19,13 @@ function LoginPage() {
     } = useForm({
         defaultValues: {
             email: "test@example.com",
+            rememberMe: false
         }
     });
 
     const onSubmit = (data) => { //onSubmit will be used for thunk set action.
         dispatch(logUser(data));
+        
         setTimeout(() => history.goBack(), 1500); //prev page
     }
 
@@ -45,7 +46,12 @@ function LoginPage() {
                             {...register("password", { required: "Password is required!" })} type="password" placeholder="password" />
                         {errors.password && <div className="text-red-500" >{errors.password.message}</div>}
 
-                        
+                        <div>
+                            <label htmlFor="">
+                                Remember me?
+                                <input {...register("rememberMe")} type="checkbox" />
+                            </label>
+                        </div>
 
                         {isSubmitting ? <div className="w-6 h-6 border-4 border-gray-300 border-t-secondary rounded-full animate-spin"></div>
                             : <button className="max-w-36 m-auto cursor-pointer rounded-3xl bg-secondary px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#1c2334]"

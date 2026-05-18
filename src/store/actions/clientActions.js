@@ -1,5 +1,7 @@
 import axios from "axios";
 import { toast } from "react-toastify";
+import useLocalStorage from "../../utils/useLocalStorage";
+import { ACCESS_TOKEN_KEY } from "../../constants/constants";
 
 //1. adım action constant oluştur
 export const SET_USER = "SET_USER";
@@ -21,13 +23,16 @@ export function logOutUser() {
     }
 }
 export const logUser = (user) => async (dispatch, getState) => {
+    const { rememberMe, ...userData } = user;
+
     try {
         const response = await axios.post(
             "https://workintech-fe-ecommerce.onrender.com/login",
-            user
+            userData
         );
         dispatch(setUser(response.data));
-        toast.success(`Hoşgeldin ${response.data.name}`)
+        if(rememberMe) localStorage.setItem(ACCESS_TOKEN_KEY, response.data.token);
+        toast.success(`Hoşgeldin ${response.data.name}`);
     } catch (error) {
         toast.error(error?.response?.data?.message || "Something went wrong");
     }

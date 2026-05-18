@@ -3,10 +3,10 @@ function ProductCard({ item, keepColorSelector = true }) {
 
     return (
         <div className="text-center">
-            <img src={item.img} className="w-full transition hover:scale-105" />
+            <img src={item.images?.[0].url} className="w-full transition hover:scale-105" />
 
-            <h3 className="font-semibold mt-6"> {item.title} </h3>
-            <p className="text-gray-500 text-sm mt-3"> {item.department} </p>
+            <h3 className="font-semibold mt-6"> {item.name} </h3>
+            <p className="text-gray-500 text-sm mt-3"> {item.description} </p>
 
             <div className="mt-3">
                 <span className="line-through text-gray-400">${item.oldPrice} </span>

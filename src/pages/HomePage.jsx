@@ -2,11 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import PageContent from '../layout/PageContent';
-import ImageCarousel from '../components/ImageCarousel';
 import EditorsPick from './page-components/HomePage/EditorsPick';
 import BestSellers from './page-components/HomePage/BestSellers';
 import ContainerFluid from './page-components/HomePage/ContainerFluid';
 import HomePageBlog from './page-components/HomePage/HomePageBlog';
+import ImageCarousel from '../components/Image-components/ImageCarousel';
 
 export default function HomePage() {
     return (

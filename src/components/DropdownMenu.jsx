@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logOutUser } from "../store/actions/clientActions";
 import { toast } from "react-toastify";
+import { ACCESS_TOKEN_KEY } from "../constants/constants";
 
 function DropdownMenu({dropdownOpen, setDropdownOpen, dropdownRef }) {
     const history = useHistory();
@@ -21,6 +22,7 @@ function DropdownMenu({dropdownOpen, setDropdownOpen, dropdownRef }) {
 
     const handleLogout = () => {
         dispatch(logOutUser());
+        localStorage.removeItem(ACCESS_TOKEN_KEY);
         toast.info("Logging out!");
         setTimeout(() => history.push("/"), 1500);
     }

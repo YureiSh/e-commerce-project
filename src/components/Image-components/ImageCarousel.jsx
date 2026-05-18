@@ -1,6 +1,6 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
-import { carouselImages } from '../constants/constants';
+import { carouselImages } from '../../constants/constants';
 
 const ImageCarousel = ({ children }) => {
     const images = carouselImages;

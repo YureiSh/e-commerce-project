@@ -16,39 +16,21 @@ body {
   --color-warning: #F3CD03;
 }
 
-/*
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-*/
 
-/*
-@layer components {
-  .btn-primary {
-    border-radius: calc(infinity * 1px);
-    background-color: var(--color-violet-500);
-    padding-inline: --spacing(5);
-    padding-block: --spacing(2);
-    font-weight: var(--font-weight-semibold);
-    color: var(--color-white);
-    box-shadow: var(--shadow-md);
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-violet-700);
-      }
-    }
-  }
+/**/
+
+#gradient {
+  width: 200%;
+  height: 200vh;
+  background: linear-gradient(135deg,
+      #ffffff,
+      #00ffff,
+      #ff00ff,
+      #333333,
+      #ffffff,
+      #00ffff) 0% 0% / 200% 200%;
 }
 
-or.
-
-.select2-dropdown {
-  @apply rounded-b-lg shadow-md;
+#gradient-background p {
+  font-family: "Playwrite US Trad", cursive;
 }
-*/

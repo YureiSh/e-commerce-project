@@ -1,10 +1,9 @@
 import { ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import ImageCarouselwPreview from "../../../components/ImageCarouselwPreview";
 import StarReview from "../../../components/UI-components/StarReview";
 import ProductActionPanel from "../../../components/UI-components/ProductActionPanel";
 import { carouselImages } from "../../../constants/constants";
-
+import ImageCarouselwPreview from "../../../components/Image-components/ImageCarouselwPreview";
 
 function ProductHero() {
 

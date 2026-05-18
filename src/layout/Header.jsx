@@ -1,29 +1,57 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ChevronDown, ChevronUp, Heart, Search, ShoppingCart, User } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import UserLoginCart from '../components/UserLoginCart';
 import { menuItems } from '../constants/constants';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import DropdownMenu from '../components/DropdownMenu';
+import { fetchCategories } from '../store/actions/productActions';
+import HoverDropdown from './layout-components/HoverDropdown';
 
 const Header = () => {
+
     const [dropdownOpen, setDropdownOpen] = useState(false);
-    const dropdownRef = useRef(null);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const dispatch = useDispatch();
+    const dropdownRef = useRef(null);
+
+    useEffect(() => {
+        dispatch(fetchCategories());
+    }, []);
+
+    const categories = useSelector((store) => store.product.categories);
     const user = useSelector((store) => store.client.user);
+
+    const womenCategories = categories.filter(item => item.gender === "k").sort((a, b) => b.rating - a.rating);
+    const menCategories = categories.filter(item => item.gender === "e").sort((a, b) => b.rating - a.rating);
 
     return (
         <section>
             <div className='header flex flex-wrap justify-between items-center'>
                 <div className='flex gap-8 items-center'>
                     <div>
-                        <h3 className='bandage' >Bandage</h3>
+                        <Link className='bandage cursor-pointer' >Bandage</Link>
                     </div>
                     <nav className='hidden lg:block' aria-label='Primary navigation'>
                         <ul className='flex gap-3'>
                             {menuItems.map((item) => (
-                                <li key={item.label} className='list-none text-gray-500 basicHover'>
-                                    <Link to={item.to}>{item.label}</Link>
+                                <li key={item.label} className={item.label == "Shop" ? `list-none text-gray-500 relative group`: "list-none text-gray-500 basicHover relative group"}>
+                                    <div className='flex'>
+                                        <Link to={item.to}>{item.label}</Link>
+                                        {item.label == "Shop" && (
+                                            <ChevronDown/>
+                                        )}
+                                    </div>
+
+                                    {item.label == "Shop" && (
+
+                                        <HoverDropdown
+                                            womenItems={womenCategories}
+                                            menItems={menCategories}
+                                        />
+
+
+                                    )}
                                 </li>
                             ))}
                         </ul>
@@ -59,10 +87,10 @@ const Header = () => {
                                     onClick={() => setDropdownOpen(prev => !prev)}
                                     onBlur={() => setDropdownOpen(false)}
                                 >{user.name}</button>
-                                <DropdownMenu 
-                                dropdownOpen={dropdownOpen} 
-                                setDropdownOpen={setDropdownOpen}
-                                dropdownRef={dropdownRef}
+                                <DropdownMenu
+                                    dropdownOpen={dropdownOpen}
+                                    setDropdownOpen={setDropdownOpen}
+                                    dropdownRef={dropdownRef}
                                 />
                             </div>
                         </div> :

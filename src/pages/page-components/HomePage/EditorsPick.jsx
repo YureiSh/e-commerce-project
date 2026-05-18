@@ -1,4 +1,4 @@
-import EditorsPickLayout from "../../../components/EditorsPickLayout";
+import EditorsPickLayout from "../../../components/Image-components/EditorsPickLayout";
 import { editorsPick } from "../../../constants/constants";
 
 function EditorsPick() {

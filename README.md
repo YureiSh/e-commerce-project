@@ -34,3 +34,9 @@ Features
 
 ### 👨‍💻 Author
 Enis Erkol
+
+
+### Yapılacaklar / to do:
+
+> T10'daki login page'e gravatar eklenmeli
+> Form içinde h3 yerine div + label kullanılmalı.

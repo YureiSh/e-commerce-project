@@ -1,4 +1,4 @@
-
+export const ACCESS_TOKEN_KEY = "accessToken";
 
 export const menuItems = [
     { label: 'Home', to: '/' },
