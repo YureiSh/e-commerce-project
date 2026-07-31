@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+:root {}
+
+
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+@theme {
+  --color-primary: #23A6F0;
+  --color-secondary: #252B42;
+  --color-success: #2DC071;
+  --color-danger: #E74040;
+  --color-warning: #F3CD03;
+}
+
+
+/**/
+
+#gradient {
+  width: 200%;
+  height: 200vh;
+  background: linear-gradient(135deg,
+      #ffffff,
+      #00ffff,
+      #ff00ff,
+      #333333,
+      #ffffff,
+      #00ffff) 0% 0% / 200% 200%;
+}
+
+#gradient-background p {
+  font-family: "Playwrite US Trad", cursive;
+}
