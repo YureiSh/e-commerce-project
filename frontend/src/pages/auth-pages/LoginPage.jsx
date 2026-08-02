@@ -14,7 +14,7 @@ function LoginPage() {
 
     const { register, handleSubmit, setError, watch, formState: { errors, isSubmitting } } = useForm({
         defaultValues: {
-            email: "customer@commerce.com",
+            email: "test@mail.com",
             rememberMe: false
         }
     });

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { toast } from "react-toastify";
+import { BASE_URL } from "../../constants/apiConstant";
 
 //1. adım action constant oluştur
 export const SET_CATEGORIES = "SET_CATEGORIES";
@@ -23,7 +24,7 @@ export function setCategories(categories) { //1 categories
 }
 export const fetchCategories = () => async (dispatch, getState) => {
     try {
-        const result = await axios.get("https://workintech-fe-ecommerce.onrender.com/categories")
+        const result = await axios.get(`${BASE_URL}/categories`)
         dispatch(setCategories(result.data));
     } catch (error) {
         toast.error(error?.response?.data?.message || "Something went wrong");
@@ -46,10 +47,10 @@ export const fetchProducts = (params) => async (dispatch) => {
         if (params.limit) queryParams.append("limit",params.limit);
         if (params.offset) queryParams.append("offset",params.offset);
 
-        const result = await axios.get(`https://workintech-fe-ecommerce.onrender.com/products?${queryParams.toString()}`);
+        const result = await axios.get(`${BASE_URL}/products?${queryParams.toString()}`);
 
-        dispatch(setProductList(result.data.products));
-        dispatch(setTotal(result.data.total));
+        dispatch(setProductList(result.data.content));
+        dispatch(setTotal(result.data.totalElements));
     } catch (error) {
         toast.error(error?.response?.data?.message || "Something went wrong");
     } finally {
@@ -68,7 +69,7 @@ export const fetchProduct = (productId) => async (dispatch) => {
     
     try {
         dispatch(setLoading(true));
-        const result = await axios.get(`https://workintech-fe-ecommerce.onrender.com/products/${productId}`);
+        const result = await axios.get(`${BASE_URL}/products/${productId}`);
         dispatch(setProduct(result.data));
         console.log(result.data);
     } catch (error) {

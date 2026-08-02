@@ -3,13 +3,14 @@ package com.ecom.project.controller;
 import com.ecom.project.dto.request.LoginRequest;
 import com.ecom.project.dto.request.RegisterRequest;
 import com.ecom.project.dto.response.LoginResponse;
+import com.ecom.project.entity.User;
 import com.ecom.project.service.AuthService;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -26,6 +27,13 @@ public class AuthController {
     public ResponseEntity<LoginResponse> login(@Valid @RequestBody LoginRequest request){
         LoginResponse response = authService.login(request);
         return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/verify")
+    public ResponseEntity<LoginResponse> verify(
+            @AuthenticationPrincipal User user,
+            @RequestHeader("Authorization") String token) {
+        return authService.verify(user, token);
     }
 
 }

@@ -12,7 +12,7 @@ function CartItem({ count, checked, item, onChecked, onIncrease, onDecrease, onR
       </div>
 
       <img
-        src={item.images[0].url}
+        src={item.imageUrls?.[0]}
         alt={item.name}
         className="w-20 h-20 rounded-xl object-cover    shrink-0 bg-gray-100"
       />

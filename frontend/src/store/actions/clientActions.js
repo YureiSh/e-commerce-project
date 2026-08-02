@@ -2,6 +2,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import useLocalStorage from "../../utils/useLocalStorage";
 import { ACCESS_TOKEN_KEY } from "../../constants/constants";
+import { BASE_URL } from "../../constants/apiConstant";
 
 //1. adım action constant oluştur
 export const SET_USER = "SET_USER";
@@ -28,7 +29,7 @@ export const logUser = (user) => async (dispatch) => {
     const { rememberMe, ...userData } = user;
 
     try {
-        const response = await axios.post("https://workintech-fe-ecommerce.onrender.com/login", userData);
+        const response = await axios.post(`${BASE_URL}/login`, userData);
         const token = response.data.token;
 
         dispatch(setUser(response.data));

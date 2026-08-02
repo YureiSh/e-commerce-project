@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import axios from "axios";
 import { ACCESS_TOKEN_KEY } from "../constants/constants";
 import { setUser } from "../store/actions/clientActions";
+import { BASE_URL } from "../constants/apiConstant";
 
 export const useAuthVerification = () => {
     const [authLoading, setAuthLoading] = useState(true);
@@ -14,7 +15,7 @@ export const useAuthVerification = () => {
         if (token) {
             axios.defaults.headers.common["Authorization"] = token; //Önemli
 
-            axios.get("https://workintech-fe-ecommerce.onrender.com/verify")
+            axios.get(`${BASE_URL}/verify`)
                 .then((res) => {
                     dispatch(setUser(res.data));
                     const newToken = res.headers["new-token"] ?? token;

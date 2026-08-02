@@ -23,7 +23,7 @@ function ProductHero() {
 
             <div className="flex flex-col lg:flex-row items-center justify-center gap-24">
                 <div id="productImgCarousel" className="max-h-120" >
-                    <ImageCarouselwPreview images={product?.images} />
+                    <ImageCarouselwPreview images={product?.imageUrls} />
                 </div>
 
                 <div id="productDetails" className=" flex flex-col font-semibold text-[#737373] px-6 lg:px-0" >

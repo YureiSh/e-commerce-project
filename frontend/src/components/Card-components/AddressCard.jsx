@@ -8,7 +8,14 @@ function AddressCard({ item, selectedId, setSelectedId, openEdit }) {
 
     function onClick(addrId){
         setSelectedId(addrId);
-        dispatch(setOrderAddress(addrId));
+        dispatch(setOrderAddress({
+            name: item.name,
+            surname: item.surname,
+            phone: item.phone,
+            city: item.city,
+            district: item.district,
+            neighborhood: item.neighborhood,
+        }));
     }
 
     return (

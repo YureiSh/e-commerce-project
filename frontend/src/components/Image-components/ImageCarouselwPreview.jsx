@@ -26,7 +26,7 @@ function ImageCarouselwPreview({ images = [] }) {
 
             <div
                 className="relative w-90 h-90 lg:w-120 lg:h-120 overflow-hidden rounded-xl bg-cover bg-center shadow-lg"
-                style={{ backgroundImage: `url(${currentImage.url })` }}
+                style={{ backgroundImage: `url(${currentImage })` }}
             >
 
                 <button
@@ -67,7 +67,7 @@ function ImageCarouselwPreview({ images = [] }) {
                                 : "border-transparent opacity-60 hover:opacity-100"
                         }`}
                     >
-                        <img src={image.url} alt={image.url} width={90} height={90} className="object-cover w-22.5 h-22.5" />
+                        <img src={image} alt={image} width={90} height={90} className="object-cover w-22.5 h-22.5" />
                     </button>
                 ))}
             </div>

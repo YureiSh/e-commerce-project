@@ -6,6 +6,7 @@ import OrderSummaryCard from "./page-components/CartPage/OrderSummaryCard";
 import { useDispatch, useSelector } from "react-redux";
 import { createOrder, resetCart, setCart, setOrder, setOrderAddress } from "../store/actions/shoppingCartActions";
 import { useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
 
 
 const tabs = [
@@ -27,19 +28,23 @@ function OrderPage() {
     const discountAmount = (subtotal * discount) / 100;
     const total = subtotal - discountAmount + shipping;
 
-    function nextPage(){
-        if(activeTab === "address"){
+    async function nextPage() {
+        if (activeTab === "address") {
             setActiveTab("payment");
-        }else{
-            const { address_id, card_no, card_name } = order;
-            if (!address_id || !card_no || !card_name?.trim()) {
+        } else {
+            const { phone, surname, lastFour, nameOnCard } = order;
+            if (!phone || !surname || !lastFour || !nameOnCard?.trim()) {
                 alert("Lütfen adres ve ödeme bilgilerini eksiksiz doldurun.");
                 return;
             }
-            dispatch(createOrder(order));
-            dispatch(setOrder({}));
-            dispatch(resetCart());
-            setTimeout(() => history.push("/congrats"), 500);
+            try {
+                const orderResult = await dispatch(createOrder(order));
+                dispatch(setOrder({}));
+                dispatch(resetCart());
+                history.push("/congrats", { order: orderResult });  // state ile taşı
+            } catch (e) {
+                // toast zaten createOrder içinde gösterildi, burada bir şey yapmaya gerek yok
+            }
         }
     }
 
@@ -49,11 +54,13 @@ function OrderPage() {
                 <div className="flex-2" >
                     <div className="flex justify-baseline gap-8 border-b border-gray-200 mb-8">
                         {tabs.map((tab) => (
-                            <h4
+                            <button
                                 key={tab.id}
-                                className={`pb-3 text-sm font-medium cursor-default transition-colors duration-200 ${activeTab === tab.id ? "border-b  text-secondary": "text-gray-400"}`}>
+                                type="button"
+                                onClick={() => setActiveTab(tab.id)}
+                                className={`pb-3 text-sm font-medium cursor-pointer transition-colors duration-200 ${activeTab === tab.id ? "border-b  text-secondary" : "text-gray-400"}`}>
                                 {tab.label}
-                            </h4>
+                            </button>
                         ))}
                     </div>
                     {activeComponent}
@@ -61,7 +68,7 @@ function OrderPage() {
                 <div className="flex-1 my-auto" >
                     <OrderSummaryCard subtotal={subtotal} shipping={shipping} total={total} >
                         <button className="p-2 mt-2 bg-secondary rounded-2xl text-white cursor-pointer"
-                        onClick={()=> nextPage()}
+                            onClick={() => nextPage()}
                         >
                             {activeTab === "payment" ? "Order" : "Save and continue"}
                         </button>

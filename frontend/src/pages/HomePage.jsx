@@ -15,11 +15,11 @@ export default function HomePage() {
                 <ImageCarousel>
                     <div className='flex flex-col max-w-65 lg:max-w-full items-center lg:items-baseline gap-24 lg:gap-20 text-white bg-gray-800/20 p-10'>
                         <h5 className='font-bold text-md'>SUMMER 2026</h5>
-                        <h1 className='text-5xl lg:text-7xl text-center'>NEW COLLECTION</h1>
+                        <h1 className='text-4xl lg:text-7xl text-center'>NEW COLLECTION</h1>
                         <h4 className='font-bold text-md lg:text-2xl'>We know how large objects will act, <br /> but things on a small scale.</h4>
                         <Link
                             to="/shop"
-                            className="px-4 lg:px-8 max-w-1/3 text-center py-4 bg-success text-white text-xl rounded-xs hover:bg-[#28A862] transition"
+                            className="px-3 py-4 lg:px-8 max-w-1/3 text-center bg-success text-white text-sm lg:text-2xl rounded-xs hover:bg-[#28A862] transition"
                         >
                             SHOP NOW
                         </Link>

@@ -1,0 +1,1 @@
+export const BASE_URL= "https://e-commerce-project-b3rx.onrender.com"; //"https://workintech-fe-ecommerce.onrender.com";

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { toast } from "react-toastify";
+import { BASE_URL } from "../../constants/apiConstant";
 
 // actions.js
 export const SET_CART = "SET_CART";
@@ -67,7 +68,7 @@ export function removePayment(payment) {
 
 export const fetchPayments = () => async (dispatch, getState) => {
     try {
-        const result = await axios.get("https://workintech-fe-ecommerce.onrender.com/user/card");
+        const result = await axios.get(`${BASE_URL}/user/card`);
         console.log("result bu:" + result);
         dispatch(setPayment(result.data));
     } catch (error) {
@@ -77,25 +78,25 @@ export const fetchPayments = () => async (dispatch, getState) => {
 
 export const newPayment = (payment) => async (dispatch, getState) => {
     try {
-        const result = await axios.post("https://workintech-fe-ecommerce.onrender.com/user/card", payment);
+        const result = await axios.post(`${BASE_URL}/user/card`, payment);
         console.log("result bu:" + result);
-        dispatch(addPayment(result.data[0]));
+        dispatch(addPayment(result.data));
     } catch (error) {
         toast.error(error?.response?.data?.message || "Something went wrong");
     }
 }
 export const updatePayment = (payment) => async (dispatch, getState) => {
     try {
-        const result = await axios.put(`https://workintech-fe-ecommerce.onrender.com/user/card`, payment);
+        const result = await axios.put(`${BASE_URL}/user/card/${payment.id}`, payment);
         console.log("result bu:" + result);
-        dispatch(changePayment(result.data[0]));
+        dispatch(changePayment(result.data));
     } catch (error) {
         toast.error(error?.response?.data?.message || "Something went wrong");
     }
 }
 export const deletePayment = (cardId) => async (dispatch, getState) => {
     try {
-        const result = await axios.delete(`https://workintech-fe-ecommerce.onrender.com/user/card/${cardId}`);
+        const result = await axios.delete(`${BASE_URL}/user/card/${cardId}`);
         console.log("result bu:" + result);
         dispatch(removePayment(cardId));
     } catch (error) {
@@ -132,7 +133,7 @@ export function removeAddress(address) {
 
 export const fetchAddresses = () => async (dispatch, getState) => {
     try {
-        const result = await axios.get("https://workintech-fe-ecommerce.onrender.com/user/address");
+        const result = await axios.get(`${BASE_URL}/user/address`);
         console.log("result bu:" + result);
         dispatch(setAddress(result.data));
     } catch (error) {
@@ -142,25 +143,25 @@ export const fetchAddresses = () => async (dispatch, getState) => {
 
 export const newAddress = (address) => async (dispatch, getState) => {
     try {
-        const result = await axios.post("https://workintech-fe-ecommerce.onrender.com/user/address", address);
+        const result = await axios.post(`${BASE_URL}/user/address`, address);
         console.log("result bu:" + result);
-        dispatch(addAddress(result.data[0]));
+        dispatch(addAddress(result.data));
     } catch (error) {
         toast.error(error?.response?.data?.message || "Something went wrong");
     }
 }
 export const updateAddress = (address) => async (dispatch, getState) => {
     try {
-        const result = await axios.put(`https://workintech-fe-ecommerce.onrender.com/user/address`, address);
+        const result = await axios.put(`${BASE_URL}/user/address/${address.id}`, address); ///${address.addressId}
         console.log("result bu:" + result);
-        dispatch(changeAddress(result.data[0]));
+        dispatch(changeAddress(result.data));
     } catch (error) {
         toast.error(error?.response?.data?.message || "Something went wrong");
     }
 }
 export const deleteAddress = (addressId) => async (dispatch, getState) => {
     try {
-        const result = await axios.delete(`https://workintech-fe-ecommerce.onrender.com/user/address/${addressId}`);
+        const result = await axios.delete(`${BASE_URL}/user/address/${addressId}`);
         console.log("result bu:" + result);
         dispatch(removeAddress(addressId));
     } catch (error) {
@@ -202,10 +203,10 @@ export function setOrder(order) {
     }
 }
 
-export function setOrderAddress(addrId) {
+export function setOrderAddress(addrObj) {
     return {
         type: SET_ORDER_ADDRESS,
-        payload: addrId
+        payload: addrObj
     }
 }
 export function setOrderPayment(pymnt) {
@@ -222,11 +223,11 @@ export function setOrderProducts(products) {
 }
 
 export const createOrder = (order) => async (dispatch, getState) => {
-    console.log(order);
     try {
-        const result = await axios.post(`https://workintech-fe-ecommerce.onrender.com/order`, order);
-        console.log("result bu:" + result);
+        const result = await axios.post(`${BASE_URL}/order`, order);
+        return result.data;  
     } catch (error) {
         toast.error(error?.response?.data?.message || "Something went wrong");
+        throw error;
     }
 }

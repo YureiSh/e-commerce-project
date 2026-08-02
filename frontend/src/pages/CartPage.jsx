@@ -62,7 +62,7 @@ function CartPage() {
                 card_cvv: 321,
                 price,
                 products: selectedProducts.map(item => ({
-                    product_id: item.product.id,
+                    productId: item.product.id,
                     count: item.count,
                     detail: item.product.name ?? ""
                 }))

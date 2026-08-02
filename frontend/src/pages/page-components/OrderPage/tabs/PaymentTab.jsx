@@ -23,10 +23,10 @@ function PaymentTab() {
             reset({ ...modal.payment });
         } else {
             reset({
-                card_no: "",
-                expire_month: null,
-                expire_year: null,
-                name_on_card: "",
+                cardNo: "",
+                expireMonth: null,
+                expireYear: null,
+                nameOnCard: "",
             });
         }
     }, [modal, reset]);
@@ -35,12 +35,12 @@ function PaymentTab() {
         setModal(null);
     }
 
-    function openNew(addr) {
+    function openNew(pymnt) {
         setModal("new");
     }
 
-    function openEdit(addr) {
-        setModal({ payment: addr });
+    function openEdit(pymnt) {
+        setModal({ payment: pymnt });
     }
 
     function onSubmit(data) {
@@ -90,8 +90,8 @@ function PaymentTab() {
                                     Kart numarası
                                 </label>
                                 <input className={FORM_CSS} //Kart numarası
-                                    {...register("card_no", { required: "Card no is required!", minLength: { value: 12, message: "Name must be at least 16 characters" } })} type="text" placeholder="4321 XXXX XXXX XXXX" />
-                                {errors.card_no && <div className="text-red-500" >{errors.card_no.message}</div>}
+                                    {...register("cardNo", { required: "Card no is required!", minLength: { value: 12, message: "Name must be at least 16 characters" } })} type="text" placeholder="4321 XXXX XXXX XXXX" />
+                                {errors.cardNo && <div className="text-red-500" >{errors.cardNo.message}</div>}
                             </div>
 
                             <div className="grid grid-cols-4 gap-3 mb-3">
@@ -100,16 +100,16 @@ function PaymentTab() {
                                         Ay
                                     </label>
                                     <input className={FORM_CSS}
-                                        {...register("expire_month", { required: "expire_month is required!", })} type="text" placeholder="MM" />
-                                    {errors?.expire_month && <div className="text-red-500" >{errors.expire_month.message}</div>}
+                                        {...register("expireMonth", { required: "expireMonth is required!", })} type="text" placeholder="MM" />
+                                    {errors?.expireMonth && <div className="text-red-500" >{errors.expireMonth.message}</div>}
                                 </div>
                                 <div>
                                     <label className="block text-xs text-gray-500 mb-1">Yıl</label>
                                     <input //Year
                                         className={FORM_CSS}
-                                        {...register("expire_year", { required: "expire_year is required.", })} type="text" placeholder="YYYY"
+                                        {...register("expireYear", { required: "expireYear is required.", })} type="text" placeholder="YYYY"
                                     />
-                                    {errors?.expire_year && <div className="text-red-500 text-xs mt-1">{errors.expire_year.message}</div>}
+                                    {errors?.expireYear && <div className="text-red-500 text-xs mt-1">{errors.expireYear.message}</div>}
                                 </div>
                                 <div /*Boş div */ ></div>
                                 {/*
@@ -129,9 +129,9 @@ function PaymentTab() {
                                 <label className="block text-xs text-gray-500 mb-1">
                                     Name on Card
                                 </label>
-                                <input className={FORM_CSS} //name_on_card
-                                    {...register("name_on_card", { required: "name_on_card is required!", minLength: { value: 3, message: "Name must be at least 3 characters" } })} type="text" placeholder="İsim" />
-                                {errors?.name_on_card && <div className="text-red-500" >{errors.name_on_card.message}</div>}
+                                <input className={FORM_CSS} //nameOnCard
+                                    {...register("nameOnCard", { required: "nameOnCard is required!", minLength: { value: 3, message: "Name must be at least 3 characters" } })} type="text" placeholder="İsim" />
+                                {errors?.nameOnCard && <div className="text-red-500" >{errors.nameOnCard.message}</div>}
                             </div>
 
                             <div className="flex gap-2 justify-end">

@@ -28,11 +28,11 @@ export default function AddressTab() {
       reset({
         title: "",
         name: "",
+        surname: "",
         phone: "",
         city: "",
         district: "",
         neighborhood: "",
-        address: ""
       });
     }
   }, [modal, reset]);
@@ -95,22 +95,30 @@ export default function AddressTab() {
             </h3>
             <form onSubmit={handleSubmit(onSubmit)} noValidate >
 
-              <div className="grid grid-cols-2 gap-3 mb-3">
+              <div className="grid grid-cols-3 gap-3 mb-3">
                 <div>
                   <label className="block text-xs text-gray-500 mb-1">
-                    Ad Soyad
+                    Ad
                   </label>
                   <input className={FORM_CSS}
-                    {...register("name", { required: "Name is required!", minLength: { value: 3, message: "Name must be at least 3 characters" } })} type="text" placeholder="Ad Soyad" />
-                  {errors.name && <div className="text-red-500" >{errors.name.message}</div>}
+                    {...register("name", { required: "Ad zorunludur!", minLength: { value: 2, message: "Ad en az 2 karakter olmalı" } })} type="text" placeholder="Ad" />
+                  {errors.name && <div className="text-red-500">{errors.name.message}</div>}
+                </div>
+                <div>
+                  <label className="block text-xs text-gray-500 mb-1">
+                    Soyad
+                  </label>
+                  <input className={FORM_CSS}
+                    {...register("surname", { required: "Soyad zorunludur!", minLength: { value: 2, message: "Soyad en az 2 karakter olmalı" } })} type="text" placeholder="Soyad" />
+                  {errors.surname && <div className="text-red-500">{errors.surname.message}</div>}
                 </div>
                 <div>
                   <label className="block text-xs text-gray-500 mb-1">
                     Telefon
                   </label>
                   <input className={FORM_CSS}
-                    {...register("phone", { required: "Phone is required!", pattern: { value: /^\+90[0-9]{10}$/, message: "Please enter a valid Turkish phone number (+90XXXXXXXXXX)" } })} type="text" placeholder="+90" />
-                  {errors?.phone && <div className="text-red-500" >{errors.phone.message}</div>}
+                    {...register("phone", { required: "Telefon zorunludur!", pattern: { value: /^\+90[0-9]{10}$/, message: "Geçerli bir telefon giriniz (+90XXXXXXXXXX)" } })} type="text" placeholder="+90" />
+                  {errors?.phone && <div className="text-red-500">{errors.phone.message}</div>}
                 </div>
               </div>
 
@@ -119,7 +127,7 @@ export default function AddressTab() {
                   Adres Başlığı
                 </label>
                 <input className={FORM_CSS}
-                  {...register("title", { required: "Address title is required!", minLength: { value: 3, message: "Name must be at least 3 characters" } })} type="text" placeholder="Ev, İş, Diğer..." />
+                  {...register("title", { required: "Address title is required!", minLength: { value: 3, message: "Title must be at least 3 characters" } })} type="text" placeholder="Ev, İş, Diğer..." />
                 {errors?.title && <div className="text-red-500" >{errors.title.message}</div>}
               </div>
 
@@ -163,20 +171,6 @@ export default function AddressTab() {
                   placeholder="Moda Mahallesi"
                 />
                 {errors?.neighborhood && <div className="text-red-500 text-xs mt-1">{errors.neighborhood.message}</div>}
-              </div>
-
-              <div className="mb-3">
-                <label className="block text-xs text-gray-500 mb-1">Adres</label>
-                <input
-                  className={FORM_CSS}
-                  {...register("address", {
-                    required: "Adres bilgisi zorunludur.",
-                    minLength: { value: 5, message: "En az 5 karakter olmalıdır." },
-                  })}
-                  type="text"
-                  placeholder="Sokak, cadde, bina no, daire..."
-                />
-                {errors?.address && <div className="text-red-500 text-xs mt-1">{errors.address.message}</div>}
               </div>
 
               <div className="flex gap-2 justify-end">

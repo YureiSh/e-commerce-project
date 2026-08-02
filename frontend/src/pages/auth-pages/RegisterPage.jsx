@@ -5,6 +5,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { useHistory  } from "react-router-dom";
+import { BASE_URL } from "../../constants/apiConstant";
 
 function RegisterPage() {
     const history = useHistory();
@@ -18,16 +19,16 @@ function RegisterPage() {
     } = useForm({
         defaultValues: {
             email: "test@example.com",
-            role_id: 3,
+            roleId: 3,
         }
     });
-    const selectedRole = watch("role_id");
+    const selectedRole = watch("roleId");
     const password = watch("password");
 
     useEffect(() => {
         const fetchRoles = async () => {
             try {
-                const res = await axios.get("https://workintech-fe-ecommerce.onrender.com/roles");
+                const res = await axios.get(`${BASE_URL}/roles`);
                 setRoles(res.data);
             } catch (err) {
                 console.error("Roles fetch error:", err);
@@ -42,7 +43,7 @@ function RegisterPage() {
         try {
             const { confirmPassword, ...rest } = data;
 
-            const result = await axios.post("https://workintech-fe-ecommerce.onrender.com/signup", rest);
+            const result = await axios.post(`${BASE_URL}/signup`, rest);
 
             toast.success(result.data.message);
             setTimeout(() => history.goBack(), 1500); //prev page
@@ -82,34 +83,34 @@ function RegisterPage() {
 
                         <h3 className="font-semibold" >Role</h3>
                         {roles.length > 0 ?
-                            <select className="mb-4" {...register("role_id", { valueAsNumber: true })}>
+                            <select className="mb-4" {...register("roleId", { valueAsNumber: true })}>
                                 {roles.map((role) => (
                                     <option key={role?.id} value={role?.id} >
-                                        {role?.name} </option>
+                                        {role?.authority} </option>
                                 ))}
                             </select> : <div className="m-auto w-6 h-6 border-4 border-gray-300 border-t-secondary rounded-full animate-spin" />}
 
-                        {selectedRole == 2 ?
+                        {selectedRole == 3 ?
                             <div className="flex flex-col justify-center gap-2 mb-5">
                                 <h3 className="font-semibold" >Store Name</h3>
                                 <input className="formInput mb-3"
-                                    {...register("store.name", { required: "Store Name is required!", minLength: { value: 3, message: "Name must be at least 3 characters" } })} type="text" placeholder="Store name" />
-                                {errors.store?.name && <div className="text-red-500" >{errors.store.name.message}</div>}
+                                    {...register("storeName", { required: "Store Name is required!", minLength: { value: 3, message: "Name must be at least 3 characters" } })} type="text" placeholder="Store name" />
+                                {errors.storeName && <div className="text-red-500" >{errors.storeName.message}</div>}
 
                                 <h3 className="font-semibold" >Store Phone</h3>
                                 <input className="formInput mb-3"
-                                    {...register("store.phone", { required: "Store Name is required!", pattern: { value: /^\+90[0-9]{10}$/, message: "Please enter a valid Turkish phone number (+90XXXXXXXXXX)" } })} type="text" placeholder="+90" />
-                                {errors.store?.phone && <div className="text-red-500" >{errors.store.phone.message}</div>}
+                                    {...register("storePhone", { required: "Store Name is required!", pattern: { value: /^\+90[0-9]{10}$/, message: "Please enter a valid Turkish phone number (+90XXXXXXXXXX)" } })} type="text" placeholder="+90" />
+                                {errors.storePhone && <div className="text-red-500" >{errors.storePhone.message}</div>}
 
                                 <h3 className="font-semibold" >Store TAX Id</h3>
                                 <input className="formInput mb-3"
-                                    {...register("store.tax_no", { required: "Store Name is required!", pattern: { value: /^T[0-9]{4}V[0-9]{6}$/, message: "Please enter a valid ID number (TXXXXVXXXXXX)" } })} type="text" placeholder="TAX NO" />
-                                {errors.store?.tax_no && <div className="text-red-500" >{errors.store.tax_no.message}</div>}
+                                    {...register("storeTaxNo", { required: "Store Name is required!", pattern: { value: /^T[0-9]{4}V[0-9]{6}$/, message: "Please enter a valid ID number (TXXXXVXXXXXX)" } })} type="text" placeholder="TAX NO" />
+                                {errors.storeTaxNo && <div className="text-red-500" >{errors.storeTaxNo.message}</div>}
 
                                 <h3 className="font-semibold" >IBAN</h3>
                                 <input className="formInput mb-3"
-                                    {...register("store.bank_account", { required: "Store Name is required!", minLength: { value: 11, message: "Please enter a valid IBAN number (TRXXXXXXXXXX)" } })} type="text" placeholder="IBAN" />
-                                {errors.store?.bank_account && <div className="text-red-500" >{errors.store.bank_account.message}</div>}
+                                    {...register("storeBankAccount", { required: "Store Name is required!", minLength: { value: 11, message: "Please enter a valid IBAN number (TRXXXXXXXXXX)" } })} type="text" placeholder="IBAN" />
+                                {errors.storeBankAccount && <div className="text-red-500" >{errors.storeBankAccount.message}</div>}
 
                             </div>
                             : null}

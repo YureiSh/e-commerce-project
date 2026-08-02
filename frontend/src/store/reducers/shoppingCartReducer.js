@@ -114,11 +114,17 @@ export function shoppingCartReducer(state = initialState, action) {
             }
         }
         case SET_ORDER_ADDRESS: {
+            const addressData = action.payload || {};
             return {
                 ...state,
                 order: {
                     ...state.order,
-                    address_id: action.payload
+                    name: addressData.name ?? state.order.name,
+                    surname: addressData.surname ?? state.order.surname,
+                    phone: addressData.phone ?? state.order.phone,
+                    city: addressData.city ?? state.order.city,
+                    district: addressData.district ?? state.order.district,
+                    neighborhood: addressData.neighborhood ?? state.order.neighborhood,
                 }
             };
         }
@@ -127,10 +133,10 @@ export function shoppingCartReducer(state = initialState, action) {
                 ...state,
                 order: {
                     ...state.order,
-                    card_no: action.payload.card_no,
-                    card_name: action.payload.card_name,
-                    card_expire_month: action.payload.card_expire_month,
-                    card_expire_year: action.payload.card_expire_year
+                    lastFour: action.payload.lastFour,
+                    nameOnCard: action.payload.nameOnCard,
+                    expireMonth: action.payload.expireMonth,
+                    expireYear: action.payload.expireYear
                 }
             };
         }

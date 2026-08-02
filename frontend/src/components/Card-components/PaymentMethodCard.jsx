@@ -10,10 +10,10 @@ function PaymentMethodCard({ item, selectedId, setSelectedId, openEdit }) {
     const handleSelect = () => {
         setSelectedId(item.id);
         dispatch(setOrderPayment({
-            card_no: item.card_no,
-            card_name: item.name_on_card,
-            card_expire_month: item.expire_month,
-            card_expire_year: item.expire_year
+            lastFour: item.lastFour,
+            nameOnCard: item.nameOnCard,
+            expireMonth: item.expireMonth,
+            expireYear: item.expireYear
         }));
     };
 
@@ -35,7 +35,7 @@ function PaymentMethodCard({ item, selectedId, setSelectedId, openEdit }) {
                     onClick={(e) => e.stopPropagation()}
                 />
                 <span className="text-sm font-semibold text-gray-800 flex-1">
-                    {item.name_on_card}
+                    {item.nameOnCard}
                 </span>
 
                 <button
@@ -60,10 +60,10 @@ function PaymentMethodCard({ item, selectedId, setSelectedId, openEdit }) {
 
             {/* Card Details */}
             <div className={`text-xs leading-relaxed ${isSelected ? "bg-secondary text-white/75" : "bg-gray-100 text-gray-500"} rounded-lg px-3 py-2 mt-1`}>
-                <p className="font-semibold mb-2">•••• {item.card_no.slice(-4)}</p>
+                <p className="font-semibold mb-2">•••• {item.lastFour}</p>
                 <div className="flex justify-between items-center">
-                    <span>{item.name_on_card}</span>
-                    <span>{String(item.expire_month).padStart(2, '0')}/{item.expire_year}</span>
+                    <span>{item.nameOnCard}</span>
+                    <span>{String(item.expireMonth).padStart(2, '0')}/{item.expireYear}</span>
                 </div>
             </div>
         </div>

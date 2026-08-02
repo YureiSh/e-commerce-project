@@ -80,98 +80,82 @@ export const editorsPick = [
 export const products = [
   {
     id: 1,
-    name: "Graphic Design",
-    description: "English Department",
-    oldPrice: 16.48,
-    price: 6.48,
-    images: [
-      {
-        url: "/ProductImgs/001.jpg"
-      }
+    name: "Oversize Tişört",
+    description: "Pamuklu Günlük Giyim",
+    oldPrice: 24.99,
+    price: 14.99,
+    imageUrls: [
+      "/ProductImgs/001.jpg"
     ]
   },
   {
     id: 2,
-    name: "Graphic Design",
-    description: "English Department",
-    oldPrice: 16.48,
-    price: 6.48,
-    images: [
-      {
-        url: "/ProductImgs/002.jpg"
-      }
+    name: "Slim Fit Kot Pantolon",
+    description: "Yüksek Bel Denim",
+    oldPrice: 49.90,
+    price: 32.50,
+    imageUrls: [
+      "/ProductImgs/002.jpg"
     ]
   },
   {
     id: 3,
-    name: "Graphic Design",
-    description: "English Department",
-    oldPrice: 16.48,
-    price: 6.48,
-    images: [
-      {
-        url: "/ProductImgs/003.jpg"
-      }
+    name: "Kapüşonlu Sweatshirt",
+    description: "Şardonlu Kışlık Model",
+    oldPrice: 59.99,
+    price: 39.99,
+    imageUrls: [
+      "/ProductImgs/003.jpg"
     ]
   },
   {
     id: 4,
-    name: "Graphic Design",
-    description: "English Department",
-    oldPrice: 16.48,
-    price: 6.48,
-    images: [
-      {
-        url: "/ProductImgs/004.jpg"
-      }
+    name: "Keten Gömlek",
+    description: "Yazlık Erkek Koleksiyonu",
+    oldPrice: 44.50,
+    price: 27.90,
+    imageUrls: [
+      "/ProductImgs/004.jpg"
     ]
   },
   {
     id: 5,
-    name: "Graphic Design",
-    description: "English Department",
-    oldPrice: 16.48,
-    price: 6.48,
-    images: [
-      {
-        url: "/ProductImgs/005.jpg"
-      }
+    name: "Triko Kazak",
+    description: "Balıkçı Yaka Yün Karışım",
+    oldPrice: 54.99,
+    price: 34.99,
+    imageUrls: [
+      "/ProductImgs/005.jpg"
     ]
   },
   {
     id: 6,
-    name: "Graphic Design",
-    description: "English Department",
-    oldPrice: 16.48,
-    price: 6.48,
-    images: [
-      {
-        url: "/ProductImgs/006.jpg"
-      }
+    name: "Deri Ceket",
+    description: "Biker Suni Deri",
+    oldPrice: 129.90,
+    price: 89.90,
+    imageUrls: [
+      "/ProductImgs/006.jpg"
     ]
   },
   {
     id: 7,
-    name: "Graphic Design",
-    description: "English Department",
-    oldPrice: 16.48,
-    price: 6.48,
-    images: [
-      {
-        url: "/ProductImgs/007.jpg"
-      }
+    name: "Çiçekli Elbise",
+    description: "Yazlık Kadın Midi Boy",
+    oldPrice: 69.99,
+    price: 42.99,
+    imageUrls: [
+      "/ProductImgs/007.jpg"
     ]
   },
   {
     id: 8,
-    name: "Graphic Design",
-    description: "English Department",
-    oldPrice: 16.48,
-    price: 6.48,
-    images: [
-      {
-        url: "/ProductImgs/008.jpg"
-      }
+    name: "Jogger Eşofman Altı",
+    description: "Lastik Paça Spor Giyim",
+    oldPrice: 39.90,
+    price: 22.90,
+    imageUrls: [
+      "/ProductImgs/008.jpg"
     ]
   },
 ];
@@ -179,146 +163,126 @@ export const products = [
 export const productsExtended = [
   {
     id: 1,
-    name: "Graphic Design",
-    description: "English Department",
-    oldPrice: 16.48,
-    price: 6.48,
-    images: [
-      {
-        url: "/ProductImgs/001.jpg"
-      }
+    name: "Oversize Tişört",
+    description: "Pamuklu Günlük Giyim",
+    oldPrice: 24.99,
+    price: 14.99,
+    imageUrls: [
+      "/ProductImgs/001.jpg"
     ]
   },
   {
     id: 2,
-    name: "Graphic Design",
-    description: "English Department",
-    oldPrice: 16.48,
-    price: 6.48,
-    images: [
-      {
-        url: "/ProductImgs/002.jpg"
-      }
+    name: "Slim Fit Kot Pantolon",
+    description: "Yüksek Bel Denim",
+    oldPrice: 49.90,
+    price: 32.50,
+    imageUrls: [
+      "/ProductImgs/002.jpg"
     ]
   },
   {
     id: 3,
-    name: "Graphic Design",
-    description: "English Department",
-    oldPrice: 16.48,
-    price: 6.48,
-    images: [
-      {
-        url: "/ProductImgs/003.jpg"
-      }
+    name: "Kapüşonlu Sweatshirt",
+    description: "Şardonlu Kışlık Model",
+    oldPrice: 59.99,
+    price: 39.99,
+    imageUrls: [
+      "/ProductImgs/003.jpg"
     ]
   },
   {
     id: 4,
-    name: "Graphic Design",
-    description: "English Department",
-    oldPrice: 16.48,
-    price: 6.48,
-    images: [
-      {
-        url: "/ProductImgs/004.jpg"
-      }
+    name: "Keten Gömlek",
+    description: "Yazlık Erkek Koleksiyonu",
+    oldPrice: 44.50,
+    price: 27.90,
+    imageUrls: [
+      "/ProductImgs/004.jpg"
     ]
   },
   {
     id: 5,
-    name: "Graphic Design",
-    description: "English Department",
-    oldPrice: 16.48,
-    price: 6.48,
-    images: [
-      {
-        url: "/ProductImgs/005.jpg"
-      }
+    name: "Triko Kazak",
+    description: "Balıkçı Yaka Yün Karışım",
+    oldPrice: 54.99,
+    price: 34.99,
+    imageUrls: [
+      "/ProductImgs/005.jpg"
     ]
   },
   {
     id: 6,
-    name: "Graphic Design",
-    description: "English Department",
-    oldPrice: 16.48,
-    price: 6.48,
-    images: [
-      {
-        url: "/ProductImgs/006.jpg"
-      }
+    name: "Deri Ceket",
+    description: "Biker Suni Deri",
+    oldPrice: 129.90,
+    price: 89.90,
+    imageUrls: [
+      "/ProductImgs/006.jpg"
     ]
   },
   {
     id: 7,
-    name: "Graphic Design",
-    description: "English Department",
-    oldPrice: 16.48,
-    price: 6.48,
-    images: [
-      {
-        url: "/ProductImgs/007.jpg"
-      }
+    name: "Çiçekli Elbise",
+    description: "Yazlık Kadın Midi Boy",
+    oldPrice: 69.99,
+    price: 42.99,
+    imageUrls: [
+      "/ProductImgs/007.jpg"
     ]
   },
   {
     id: 8,
-    name: "Graphic Design",
-    description: "English Department",
-    oldPrice: 16.48,
-    price: 6.48,
-    images: [
-      {
-        url: "/ProductImgs/008.jpg"
-      }
+    name: "Jogger Eşofman Altı",
+    description: "Lastik Paça Spor Giyim",
+    oldPrice: 39.90,
+    price: 22.90,
+    imageUrls: [
+      "/ProductImgs/008.jpg"
     ]
   },
   {
     id: 9,
-    name: "Graphic Design",
-    description: "English Department",
-    oldPrice: 16.48,
-    price: 6.48,
-    images: [
-      {
-        url: "/ProductImgs/009.jpg"
-      }
+    name: "Blazer Ceket",
+    description: "Ofis Şık Kadın Giyim",
+    oldPrice: 99.90,
+    price: 64.90,
+    imageUrls: [
+      "https://picsum.photos/seed/prod9a/500/600",
+      "https://picsum.photos/seed/prod9b/500/600"
     ]
   },
   {
     id: 10,
-    name: "Graphic Design",
-    description: "English Department",
-    oldPrice: 16.48,
-    price: 6.48,
-    images: [
-      {
-        url: "/ProductImgs/010.jpg"
-      }
+    name: "Kargo Şort",
+    description: "Çok Cepli Yazlık",
+    oldPrice: 34.99,
+    price: 19.99,
+    imageUrls: [
+      "https://picsum.photos/seed/prod10a/500/600",
+      "https://picsum.photos/seed/prod10b/500/600"
     ]
   },
   {
     id: 11,
-    name: "Graphic Design",
-    description: "English Department",
-    oldPrice: 16.48,
-    price: 6.48,
-    images: [
-      {
-        url: "/ProductImgs/011.jpg"
-      }
+    name: "Polo Yaka Tişört",
+    description: "Düğmeli Klasik Kesim",
+    oldPrice: 29.90,
+    price: 18.50,
+    imageUrls: [
+      "https://picsum.photos/seed/prod11a/500/600",
+      "https://picsum.photos/seed/prod11b/500/600"
     ]
   },
   {
     id: 12,
-    name: "Graphic Design",
-    description: "English Department",
-    oldPrice: 16.48,
-    price: 6.48,
-    images: [
-      {
-        url: "/ProductImgs/012.jpg"
-      }
+    name: "Kışlık Mont",
+    description: "Şişme Su Geçirmez Parka",
+    oldPrice: 179.90,
+    price: 119.90,
+    imageUrls: [
+      "https://picsum.photos/seed/prod12a/500/600",
+      "https://picsum.photos/seed/prod12b/500/600"
     ]
   },
 ];

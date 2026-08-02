@@ -10,8 +10,10 @@ import com.ecom.project.exception.AuthException;
 import com.ecom.project.repository.RoleRepository;
 import com.ecom.project.repository.UserRepository;
 import com.ecom.project.util.JwtUtil;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -71,6 +73,13 @@ public class AuthService {
                 user.getName(),
                 user.getEmail(),
                 user.getRole().getId());
+    }
+
+    public ResponseEntity<LoginResponse> verify(User user, String token) {
+        if (user == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+        return ResponseEntity.ok(LoginResponse.from(user, token));
     }
 
 }

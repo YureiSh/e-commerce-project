@@ -49,7 +49,7 @@ export default function UserLoginCart({ isMobileMenuOpen, setIsMobileMenuOpen, d
                                     {cart.map((item) => (
                                         <div key={item.product.id} className="flex gap-1 justify-baseline border-b mb-3 pb-6 pt-6">
                                             <div className='flex items-center justify-center w-20 h-20'>
-                                                <img className=' w-full h-full object-cover object-center' src={item.product.images[0]?.url} alt={item.product.name} />
+                                                <img className=' w-full h-full object-cover object-center' src={item.product.imageUrls[0]} alt={item.product.name} />
                                             </div>
                                             <div className='flex flex-col px-3'>
                                                 <h3 className='font-semibold text-black/75 text-[18px]' >{item.product.name}</h3>
