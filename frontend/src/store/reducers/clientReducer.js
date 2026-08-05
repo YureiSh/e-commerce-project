@@ -1,4 +1,4 @@
-import { LOGOUT_USER, SET_LANG, SET_ROLES, SET_THEME, SET_USER } from "../actions/clientActions";
+import { LOGOUT_USER, SET_LANG, SET_LIKED, SET_ROLES, SET_THEME, SET_USER } from "../actions/clientActions";
 
 const initialState = {
     user: {},
@@ -7,6 +7,7 @@ const initialState = {
     roles: [],
     theme: "",
     language: "",
+    liked: []
 };
 
 export function clientReducer(state = initialState, action) {
@@ -36,6 +37,16 @@ export function clientReducer(state = initialState, action) {
                 ...state,
                 language: action.payload
             }
+        case SET_LIKED: {
+            const exists = state.liked.find(item => item.id === action.payload.id);
+            if (exists) {
+                return {
+                    ...state,
+                    liked: state.liked.filter(item => item.id !== action.payload.id)
+                };
+            }
+            return { ...state, liked: [...state.liked, action.payload] };
+        }
         default:
             return state;
     }

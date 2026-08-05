@@ -4,12 +4,18 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import DropdownMenu from './DropdownMenu';
 import CartDropdown from '../layout/layout-components/CartDropdown';
+import { useLocation } from 'react-router-dom';
+import { useSlugify } from "../utils/useSlugify";
+import LikedDropdown from '../layout/layout-components/LikedDropdown';
 
 export default function UserLoginCart({ isMobileMenuOpen, setIsMobileMenuOpen, dropdownOpen, setDropdownOpen, dropdownRef }) {
-    //Gelen user bilgisi ya da session bilgisine göre cart
+    const { pathname } = useLocation();
+
     const [isCartOpen, SetIsCartOpen] = useState(false);
+    const [isLikedOpen, setIsLikedOpen] = useState(false); // State for LikedDropdown
 
     const user = useSelector((store) => store.client.user);
+    const liked = useSelector((store) => store.client.liked);
     const cart = useSelector((store) => store.shoppingCart.cart);
 
     return (
@@ -70,8 +76,32 @@ export default function UserLoginCart({ isMobileMenuOpen, setIsMobileMenuOpen, d
                         </CartDropdown>
                     }
                 </div>
-                <div className='hidden lg:block cursor-pointer customImg'>
-                    <Heart size={16} />
+                <div className='relative'>
+                    <Heart
+                        size={16}
+                        onClick={() => setIsLikedOpen(!isLikedOpen)}
+                        className={`cursor-pointer ${liked.length > 0 ? 'fill-red-500 border-red-500 text-red-500' : ''}`}
+                    />                    {isLikedOpen &&
+                        <LikedDropdown>
+                            <div className="text-black bg-white shadow-md rounded-md p-4">
+                                <div className="text-xl px-2 mb-4">Liked Items ({liked?.length})</div>
+                                <div>
+                                    {liked.map((item) => (
+                                        <div key={item.id} className="flex justify-between items-center border-b mb-3 pb-3">
+                                            <div className="flex flex-col">
+                                                <h3 className="font-semibold text-black/75 text-[16px]">{item.name}</h3>
+                                                <h4 className="font-semibold text-[16px] text-primary">${item.price}</h4>
+                                            </div>
+                                            <Link to={`/shop/${useSlugify(item.name)}/${item.id}`}
+                                                className="text-blue-500 hover:underline"
+                                            >
+                                                View Item
+                                            </Link>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </LikedDropdown>}
                 </div>
                 <button
                     type='button'

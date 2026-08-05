@@ -10,6 +10,7 @@ export const LOGOUT_USER = "LOGOUT_USER";
 export const SET_ROLES = "SET_ROLES";
 export const SET_THEME = "SET_THEME";
 export const SET_LANG = "SET_LANG";
+export const SET_LIKED = "SET_LIKED";
 
 //2. adım action creator function oluştur
 export function setUser(user) {
@@ -63,5 +64,12 @@ export function setLanguage(lang) {
     return {
         type: SET_LANG,
         payload: lang
+    }
+}
+
+export function setLiked(liked) {
+    return {
+        type: SET_LIKED,
+        payload: liked
     }
 }
