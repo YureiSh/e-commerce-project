@@ -37,7 +37,7 @@ function OrderFinished() {
                             </div>
                             <div className="flex justify-between py-1.5 text-sm border-t border-gray-100">
                                 <span className="text-gray-500">Tutar</span>
-                                <span className="font-semibold text-secondary">{order.price} TL</span>
+                                <span className="font-semibold text-secondary">{order.price} $</span>
                             </div>
                         </div>
                     )}

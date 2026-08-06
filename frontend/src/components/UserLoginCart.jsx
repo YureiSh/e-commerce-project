@@ -12,7 +12,7 @@ export default function UserLoginCart({ isMobileMenuOpen, setIsMobileMenuOpen, d
     const { pathname } = useLocation();
 
     const [isCartOpen, SetIsCartOpen] = useState(false);
-    const [isLikedOpen, setIsLikedOpen] = useState(false); // State for LikedDropdown
+    const [isLikedOpen, setIsLikedOpen] = useState(false);
 
     const user = useSelector((store) => store.client.user);
     const liked = useSelector((store) => store.client.liked);

@@ -7,7 +7,7 @@ const initialState = {
     roles: [],
     theme: "",
     language: "",
-    liked: []
+    liked: JSON.parse(localStorage.getItem("xj12")) ?? [],
 };
 
 export function clientReducer(state = initialState, action) {
