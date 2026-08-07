@@ -130,3 +130,7 @@ npm run dev
 ## License
 
 This project is for personal/portfolio purposes.
+
+## To do
+
+- Bestseller product cards needs a bugfix check

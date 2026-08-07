@@ -1,15 +1,13 @@
 import { Link } from "react-router-dom";
 import { useSlugify } from "../utils/useSlugify";
-import { useLocation } from "react-router-dom";
 
 function ProductCard({ item, keepColorSelector = true }) {
     window.scrollTo(0, 0);
-    const {pathname} = useLocation();
    
     return (
         <div className="text-center">
             
-            <Link to={`${pathname}/${useSlugify(item.name)}/${item.id}`}>
+            <Link to={`/shop/${useSlugify(item.name)}/${item.id}`}>
                 <img src={item.imageUrls?.[0] || "https://picsum.photos/seed/prod8a/500/600"} className="w-full transition hover:scale-105" />
             </Link>
 
