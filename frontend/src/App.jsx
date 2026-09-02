@@ -22,7 +22,7 @@ function App() {
 
   const { authLoading } = useAuthVerification();
 
-  if (authLoading) return <CustomGsapSpinner />;
+  // if (authLoading) return <CustomGsapSpinner />; Temporary disable
 
   return (
     <BrowserRouter>
