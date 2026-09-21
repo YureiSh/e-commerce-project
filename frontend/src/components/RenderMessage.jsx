@@ -7,7 +7,7 @@ function RenderMessage() {
     useEffect(() => {
         const showTimer = window.setTimeout(() => setIsVisible(true), 50);
         const hideTimer = window.setTimeout(() => setIsVisible(false), 3600);
-        const removeTimer = window.setTimeout(() => setIsMounted(false), 4300);
+        const removeTimer = window.setTimeout(() => setIsMounted(false), 6300);
 
         return () => {
             window.clearTimeout(showTimer);
