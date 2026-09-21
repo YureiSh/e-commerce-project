@@ -20,6 +20,12 @@ public class ProductService {
     public Page<Product> search(Long category, String filter, String sort, int limit, int offset) {
         if (category != null && category < 0)
             throw new GeneralException("CategoryId should be positive number", HttpStatus.BAD_REQUEST);
+        if (limit < 0 || limit == 0){
+            throw new GeneralException("Limit should be positive number", HttpStatus.BAD_REQUEST);
+        }
+        if (offset < 0){
+            throw new GeneralException("Offset should be positive number", HttpStatus.BAD_REQUEST);
+        }
 
         String normalizedFilter = (filter == null || filter.isBlank()) ? null : filter.trim();
 

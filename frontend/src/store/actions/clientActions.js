@@ -1,6 +1,5 @@
 import axios from "axios";
 import { toast } from "react-toastify";
-import useLocalStorage from "../../utils/useLocalStorage";
 import { ACCESS_TOKEN_KEY } from "../../constants/constants";
 import { BASE_URL } from "../../constants/apiConstant";
 

@@ -1,4 +1,4 @@
-export function useSlugify(text) {
+export function slugify(text) {
     if(!text) return;
   return text
     .toLowerCase()

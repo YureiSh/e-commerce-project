@@ -17,10 +17,8 @@ export const useAuthVerification = () => {
 
             axios.get(`${BASE_URL}/verify`)
                 .then((res) => {
+                    // Tazelenmiş token'ı axiosSetup'taki response interceptor yakalıyor.
                     dispatch(setUser(res.data));
-                    const newToken = res.headers["new-token"] ?? token;
-                    localStorage.setItem(ACCESS_TOKEN_KEY, newToken);
-                    axios.defaults.headers.common["Authorization"] = newToken;
                 })
                 .catch(() => {
                     localStorage.removeItem(ACCESS_TOKEN_KEY);

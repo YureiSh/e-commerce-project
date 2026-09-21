@@ -21,6 +21,9 @@ public class JwtUtil {
     @Value("${jwt.expiration}")
     private Long expiration;
 
+    @Value("${jwt.refresh-threshold}")
+    private Long refreshThreshold;
+
     private Key getSigninKey(){
         byte[] keyBytes = Decoders.BASE64.decode(secret);
         return Keys.hmacShaKeyFor(keyBytes);
@@ -57,6 +60,15 @@ public class JwtUtil {
 
     public Boolean isTokenExpired(String token){
         return extractExpiration(token).before(new Date());
+    }
+
+    /**
+     * Token'in kalan omru refreshThreshold'un altina dustuyse true doner.
+     * Suresi dolmus token yenilenmez; onun icin yeniden giris gerekir.
+     */
+    public boolean shouldRefresh(String token){
+        long remaining = extractExpiration(token).getTime() - System.currentTimeMillis();
+        return remaining > 0 && remaining < refreshThreshold;
     }
 
     public Boolean validateToken(String token, String email){

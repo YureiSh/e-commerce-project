@@ -4,9 +4,8 @@ import AddressTab from "./page-components/OrderPage/tabs/AddressTab";
 import PaymentTab from "./page-components/OrderPage/tabs/PaymentTab";
 import OrderSummaryCard from "./page-components/CartPage/OrderSummaryCard";
 import { useDispatch, useSelector } from "react-redux";
-import { createOrder, resetCart, setCart, setOrder, setOrderAddress } from "../store/actions/shoppingCartActions";
+import { createOrder, resetCart, setOrder } from "../store/actions/shoppingCartActions";
 import { useHistory } from "react-router-dom";
-import { toast } from "react-toastify";
 
 
 const tabs = [
@@ -42,7 +41,7 @@ function OrderPage() {
                 dispatch(setOrder({}));
                 dispatch(resetCart());
                 history.push("/congrats", { order: orderResult });  // state ile taşı
-            } catch (e) {
+            } catch {
                 // toast zaten createOrder içinde gösterildi, burada bir şey yapmaya gerek yok
             }
         }

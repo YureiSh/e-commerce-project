@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useEffect } from "react";
 import { User, LogOut, ShoppingBag, Heart, Settings, ChevronDown, ChevronUp } from "lucide-react";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";

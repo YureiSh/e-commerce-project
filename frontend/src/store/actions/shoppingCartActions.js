@@ -66,38 +66,34 @@ export function removePayment(payment) {
     }
 }
 
-export const fetchPayments = () => async (dispatch, getState) => {
+export const fetchPayments = () => async (dispatch) => {
     try {
         const result = await axios.get(`${BASE_URL}/user/card`);
-        console.log("result bu:" + result);
         dispatch(setPayment(result.data));
     } catch (error) {
         toast.error(error?.response?.data?.message || "Something went wrong");
     }
 }
 
-export const newPayment = (payment) => async (dispatch, getState) => {
+export const newPayment = (payment) => async (dispatch) => {
     try {
         const result = await axios.post(`${BASE_URL}/user/card`, payment);
-        console.log("result bu:" + result);
         dispatch(addPayment(result.data));
     } catch (error) {
         toast.error(error?.response?.data?.message || "Something went wrong");
     }
 }
-export const updatePayment = (payment) => async (dispatch, getState) => {
+export const updatePayment = (payment) => async (dispatch) => {
     try {
         const result = await axios.put(`${BASE_URL}/user/card/${payment.id}`, payment);
-        console.log("result bu:" + result);
         dispatch(changePayment(result.data));
     } catch (error) {
         toast.error(error?.response?.data?.message || "Something went wrong");
     }
 }
-export const deletePayment = (cardId) => async (dispatch, getState) => {
+export const deletePayment = (cardId) => async (dispatch) => {
     try {
-        const result = await axios.delete(`${BASE_URL}/user/card/${cardId}`);
-        console.log("result bu:" + result);
+        await axios.delete(`${BASE_URL}/user/card/${cardId}`);
         dispatch(removePayment(cardId));
     } catch (error) {
         toast.error(error?.response?.data?.message || "Something went wrong");
@@ -131,38 +127,34 @@ export function removeAddress(address) {
 }
 
 
-export const fetchAddresses = () => async (dispatch, getState) => {
+export const fetchAddresses = () => async (dispatch) => {
     try {
         const result = await axios.get(`${BASE_URL}/user/address`);
-        console.log("result bu:" + result);
         dispatch(setAddress(result.data));
     } catch (error) {
         toast.error(error?.response?.data?.message || "Something went wrong");
     }
 }
 
-export const newAddress = (address) => async (dispatch, getState) => {
+export const newAddress = (address) => async (dispatch) => {
     try {
         const result = await axios.post(`${BASE_URL}/user/address`, address);
-        console.log("result bu:" + result);
         dispatch(addAddress(result.data));
     } catch (error) {
         toast.error(error?.response?.data?.message || "Something went wrong");
     }
 }
-export const updateAddress = (address) => async (dispatch, getState) => {
+export const updateAddress = (address) => async (dispatch) => {
     try {
         const result = await axios.put(`${BASE_URL}/user/address/${address.id}`, address); ///${address.addressId}
-        console.log("result bu:" + result);
         dispatch(changeAddress(result.data));
     } catch (error) {
         toast.error(error?.response?.data?.message || "Something went wrong");
     }
 }
-export const deleteAddress = (addressId) => async (dispatch, getState) => {
+export const deleteAddress = (addressId) => async (dispatch) => {
     try {
-        const result = await axios.delete(`${BASE_URL}/user/address/${addressId}`);
-        console.log("result bu:" + result);
+        await axios.delete(`${BASE_URL}/user/address/${addressId}`);
         dispatch(removeAddress(addressId));
     } catch (error) {
         toast.error(error?.response?.data?.message || "Something went wrong");
@@ -222,7 +214,7 @@ export function setOrderProducts(products) {
     }
 }
 
-export const createOrder = (order) => async (dispatch, getState) => {
+export const createOrder = (order) => async () => {
     try {
         const result = await axios.post(`${BASE_URL}/order`, order);
         return result.data;  

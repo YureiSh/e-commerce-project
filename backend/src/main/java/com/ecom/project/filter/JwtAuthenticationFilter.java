@@ -25,6 +25,8 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
+    public static final String NEW_TOKEN_HEADER = "new-token";
+
     private final JwtUtil jwtUtil;
     private final UserRepository userRepository;
 
@@ -60,6 +62,12 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                             user, null, user.getAuthorities());
                     auth.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                     SecurityContextHolder.getContext().setAuthentication(auth);
+
+                    // Oturumu kaydirmali uzat: token son dumene girdiyse
+                    // yenisini uret ve yanit header'i ile geri gonder.
+                    if (jwtUtil.shouldRefresh(jwt)) {
+                        response.setHeader(NEW_TOKEN_HEADER, jwtUtil.generateToken(email));
+                    }
                 }
             }
         } catch (RuntimeException e) {

@@ -63,7 +63,7 @@ public class AuthService {
                 .orElseThrow(() -> new AuthException("Email not found", HttpStatus.NOT_FOUND));
 
         if(!passwordEncoder.matches(request.password(), user.getPassword())){
-            throw new AuthException("Invalid email or password ", HttpStatus.CONFLICT);
+            throw new AuthException("Invalid email or password ", HttpStatus.NOT_FOUND);
         }
 
         String token = jwtUtil.generateToken(user.getEmail());

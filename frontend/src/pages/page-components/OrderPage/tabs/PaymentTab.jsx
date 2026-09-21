@@ -16,7 +16,7 @@ function PaymentTab() {
     const [selectedId, setSelectedId] = useState(1);
     const [modal, setModal] = useState(null);
 
-    const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
     useEffect(() => {
         if (modal && modal !== "new") {
@@ -35,7 +35,7 @@ function PaymentTab() {
         setModal(null);
     }
 
-    function openNew(pymnt) {
+    function openNew() {
         setModal("new");
     }
 

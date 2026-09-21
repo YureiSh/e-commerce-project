@@ -4,14 +4,13 @@ import PageContent from "../layout/PageContent";
 import ProductHero from "./page-components/ProductPage/ProductHero";
 import ProductMain from "./page-components/ProductPage/ProductMain";
 import ProductCta from "./page-components/ProductPage/ProductCta";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { fetchProduct } from "../store/actions/productActions";
 
 function ProductPage() {
     const { productId } = useParams();
     const dispatch = useDispatch();
-    const {product, loading} = useSelector((store) => store.product);
 
     useEffect(() => {
         dispatch(fetchProduct(productId));

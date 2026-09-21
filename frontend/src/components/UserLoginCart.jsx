@@ -1,15 +1,13 @@
 import { ChevronDown, ChevronUp, Heart, Search, ShoppingCart, User } from 'lucide-react';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import DropdownMenu from './DropdownMenu';
 import CartDropdown from '../layout/layout-components/CartDropdown';
-import { useLocation } from 'react-router-dom';
-import { useSlugify } from "../utils/useSlugify";
+import { slugify } from "../utils/slugify";
 import LikedDropdown from '../layout/layout-components/LikedDropdown';
 
 export default function UserLoginCart({ isMobileMenuOpen, setIsMobileMenuOpen, dropdownOpen, setDropdownOpen, dropdownRef }) {
-    const { pathname } = useLocation();
 
     const [isCartOpen, SetIsCartOpen] = useState(false);
     const [isLikedOpen, setIsLikedOpen] = useState(false);
@@ -92,7 +90,7 @@ export default function UserLoginCart({ isMobileMenuOpen, setIsMobileMenuOpen, d
                                                 <h3 className="font-semibold text-black/75 text-[16px]">{item.name}</h3>
                                                 <h4 className="font-semibold text-[16px] text-primary">${item.price}</h4>
                                             </div>
-                                            <Link to={`/shop/${useSlugify(item.name)}/${item.id}`}
+                                            <Link to={`/shop/${slugify(item.name)}/${item.id}`}
                                                 className="text-blue-500 hover:underline"
                                             >
                                                 View Item

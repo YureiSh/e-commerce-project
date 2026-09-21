@@ -4,15 +4,14 @@ import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { logUser } from "../../store/actions/clientActions";
 import { useHistory } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 function LoginPage() {
-    const [rememberMe, setRememberMe] = useState(false);
     const history = useHistory();
     const dispatch = useDispatch();
     const user = useSelector((store) => store.client.user);
 
-    const { register, handleSubmit, setError, watch, formState: { errors, isSubmitting } } = useForm({
+    const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm({
         defaultValues: {
             email: "test@mail.com",
             rememberMe: false

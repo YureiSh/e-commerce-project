@@ -16,7 +16,7 @@ A full-stack application consisting of a React-based e-commerce interface and th
 - JWT-based authentication (registration, login, roles, token verification, authorization & authentication)
 - Product filtering and listing (CRUD)
 - Card and address management (token provider, CRUD)
-- Order creation
+- Order creation and order history
 
 ## Tech Stack
 
@@ -27,7 +27,7 @@ A full-stack application consisting of a React-based e-commerce interface and th
 - Axios
 
 **Backend**
-- Java 17, Spring Boot 3
+- Java 17, Spring Boot 4.1
 - Spring Data JPA (Hibernate)
 - Spring Security + JWT
 - Maven
@@ -80,6 +80,7 @@ For these requests, the token is sent directly in the `Authorization` header.
 | POST | `/user/address` | Adds a new address |
 | PUT | `/user/address` | Updates an address |
 | DELETE | `/user/address/{addressId}` | Deletes an address |
+| GET | `/order` | Lists the authenticated user's past orders |
 | POST | `/order` | Creates a new order |
 
 ### Authentication flow

@@ -4,6 +4,7 @@ import com.ecom.project.dto.request.OrderRequest;
 import com.ecom.project.dto.response.OrderResponse;
 import com.ecom.project.entity.User;
 import com.ecom.project.service.OrderService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -26,7 +27,7 @@ public class OrderController {
     }
 
     @PostMapping("/order")
-    public OrderResponse createOrder(@AuthenticationPrincipal User user, @RequestBody OrderRequest request){
+    public OrderResponse createOrder(@AuthenticationPrincipal User user, @Valid @RequestBody OrderRequest request){
         return orderService.createOrder(request,user);
     }
 

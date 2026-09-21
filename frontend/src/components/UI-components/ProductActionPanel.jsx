@@ -2,7 +2,6 @@ import { Eye, Heart, ShoppingCart } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { setCart } from "../../store/actions/shoppingCartActions";
 import { setLiked } from "../../store/actions/clientActions"; // liked action'ın nerede ise
-import { useState } from "react";
 
 const colors = ["#29ABE2", "#4CAF50", "#FF6B35", "#1B2A4A"];
 

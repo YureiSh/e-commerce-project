@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import AddressCard from "../../../../components/Card-components/AddressCard";
 import { useForm } from "react-hook-form";
-import { EMPTY_FORM, MOCK_ADDRESSES } from "../constants/orderConstants";
-import axios from "axios";
+import { MOCK_ADDRESSES } from "../constants/orderConstants";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAddresses, newAddress, updateAddress } from "../../../../store/actions/shoppingCartActions";
 
@@ -17,9 +16,8 @@ export default function AddressTab() {
   const { address } = useSelector((store) => store.shoppingCart);
   const [selectedId, setSelectedId] = useState(1);
   const [modal, setModal] = useState(null);
-  const [form, setForm] = useState(EMPTY_FORM);
 
-  const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm();
+  const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
   useEffect(() => {
     if (modal && modal !== "new") {
@@ -37,7 +35,7 @@ export default function AddressTab() {
     }
   }, [modal, reset]);
 
-  function openNew(addr) {
+  function openNew() {
     setModal("new");
   }
 

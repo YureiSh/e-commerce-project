@@ -22,7 +22,7 @@ export function setCategories(categories) { //1 categories
         payload: categories
     }
 }
-export const fetchCategories = () => async (dispatch, getState) => {
+export const fetchCategories = () => async (dispatch) => {
     try {
         const result = await axios.get(`${BASE_URL}/categories`)
         dispatch(setCategories(result.data));
@@ -71,7 +71,6 @@ export const fetchProduct = (productId) => async (dispatch) => {
         dispatch(setLoading(true));
         const result = await axios.get(`${BASE_URL}/products/${productId}`);
         dispatch(setProduct(result.data));
-        console.log(result.data);
     } catch (error) {
         toast.error(error?.response?.data?.message || "Something went wrong");
     } finally{

@@ -36,6 +36,7 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> {
                     auth.requestMatchers("/user/**").authenticated();
+                    auth.requestMatchers("/order/**").authenticated();
                     auth.anyRequest().permitAll();
                 })
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
@@ -51,6 +52,9 @@ public class SecurityConfig {
         ));
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
         config.setAllowedHeaders(List.of("*"));
+        // allowedHeaders istegi kapsar; yanit header'ini JS'in okuyabilmesi
+        // icin ayrica expose edilmesi gerekir.
+        config.setExposedHeaders(List.of(JwtAuthenticationFilter.NEW_TOKEN_HEADER));
         config.setAllowCredentials(true);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();

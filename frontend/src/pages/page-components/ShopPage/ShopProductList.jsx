@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import { useParams, useLocation, Link } from "react-router-dom";
 import { fetchProducts, setOffset } from "../../../store/actions/productActions";
-import { useSlugify } from "../../../utils/useSlugify";
+import { slugify } from "../../../utils/slugify";
 
 function ShopProductList() {
     const [view, setView] = useState("imgView");
@@ -16,12 +16,11 @@ function ShopProductList() {
     const {pathname} = useLocation();
 
     const [isQueryVisible, setIsQueryVisible] = useState(false);
-    const { productList, total, loading, limit, offset } = useSelector((store) => store.product);
+    const { productList, total, limit, offset } = useSelector((store) => store.product);
     const { categoryId } = useParams();
 
     const dispatch = useDispatch();
 
-    const isFirstRender = useRef(true);
     const prevCategoryId = useRef(categoryId);
 
     useEffect(() => {
@@ -88,11 +87,10 @@ function ShopProductList() {
                                 <FaMagnifyingGlass className="text-[#737373] mx-3" size={16} />
                             </div>
                         ) : null}
-                        <button onClick={(e) => {
+                        <button onClick={() => {
                             if (isQueryVisible) {
                                 dispatch(setOffset(0))
                                 setQuery(queryRef.current.value);
-                                console.log(query);
                             } else {
                                 setIsQueryVisible(true);
                             }
@@ -110,7 +108,7 @@ function ShopProductList() {
                     ) : (
                         <div className="flex flex-col gap-6 max-w-300 m-auto px-16 md:px-0 mt-12 pb-12">
                             {productList.map((item) => (
-                                <Link key={item.id} to={`${pathname}/${useSlugify(item.name)}/${item.id}`}>
+                                <Link key={item.id} to={`${pathname}/${slugify(item.name)}/${item.id}`}>
                                     <div
                                         
                                         className="flex flex-col sm:flex-row gap-6 border border-[#e5e5e5] rounded-md p-4 hover:shadow-md transition"

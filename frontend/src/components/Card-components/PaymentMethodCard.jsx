@@ -1,7 +1,7 @@
 
 import { Trash2 } from "lucide-react";
 import { useDispatch } from "react-redux";
-import { deleteAddress, deletePayment, setOrderPayment } from "../../store/actions/shoppingCartActions";
+import { deletePayment, setOrderPayment } from "../../store/actions/shoppingCartActions";
 
 function PaymentMethodCard({ item, selectedId, setSelectedId, openEdit }) {
     const dispatch = useDispatch();

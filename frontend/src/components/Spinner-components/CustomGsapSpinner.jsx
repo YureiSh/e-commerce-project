@@ -7,7 +7,7 @@ function CustomGsapSpinner() {
         gsap.set(gradient, {
             background: "linear-gradient(135deg, #fff, #0ff, #f0f)"
         })
-        const tl = gsap.timeline({
+        gsap.timeline({
             repeat: -1,
             defaults: {
                 duration: 4,

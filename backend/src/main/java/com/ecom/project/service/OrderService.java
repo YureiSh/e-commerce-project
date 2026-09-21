@@ -3,15 +3,15 @@ package com.ecom.project.service;
 import com.ecom.project.dto.request.OrderProductRequest;
 import com.ecom.project.dto.request.OrderRequest;
 import com.ecom.project.dto.response.OrderResponse;
-import com.ecom.project.entity.OrderProduct;
-import com.ecom.project.entity.Orders;
-import com.ecom.project.entity.Product;
-import com.ecom.project.entity.User;
+import com.ecom.project.entity.*;
+import com.ecom.project.exception.AuthException;
+import com.ecom.project.exception.CardException;
 import com.ecom.project.repository.OrdersRepository;
 import com.ecom.project.repository.ProductRepository;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -25,11 +25,19 @@ public class OrderService {
     private final ProductRepository productRepository;
 
     public List<OrderResponse> getAllOrders(User user){
-        return null;
+        return ordersRepository
+                .findByUserId(user.getId())
+                .stream()
+                .map(OrderResponse::from)
+                .toList();
     }
 
     @Transactional
     public OrderResponse createOrder(OrderRequest request, User user) {
+        if(user == null ){
+            throw new AuthException("User is null!", HttpStatus.BAD_REQUEST);
+        }
+
         Orders order = new Orders();
         order.setUser(user);
         order.setName(request.name());
