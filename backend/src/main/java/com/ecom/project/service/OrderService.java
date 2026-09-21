@@ -15,6 +15,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -22,6 +23,10 @@ public class OrderService {
 
     private final OrdersRepository ordersRepository;
     private final ProductRepository productRepository;
+
+    public List<OrderResponse> getAllOrders(User user){
+        return null;
+    }
 
     @Transactional
     public OrderResponse createOrder(OrderRequest request, User user) {

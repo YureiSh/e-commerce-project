@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useSlugify } from "../utils/useSlugify";
+import { useSlugify } from "../../utils/useSlugify";
 import { useLocation } from "react-router-dom";
 
 function ProductCard({ item, keepColorSelector = true }) {

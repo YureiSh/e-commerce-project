@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import ProductCard from "../../../components/ProductCard";
+import ProductCard from "../../../components/Card-components/ProductCard";
 import { productsExtended } from "../../../constants/constants";
 import { ChevronLeft, ChevronRight, ListCheck, VectorSquare } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";

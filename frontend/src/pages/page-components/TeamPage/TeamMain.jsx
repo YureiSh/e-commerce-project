@@ -1,7 +1,7 @@
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 import { Link } from "react-router-dom";
-import TeamMemberCard from "../../../components/TeamMemberCard";
+import TeamMemberCard from "../../../components/Card-components/TeamMemberCard";
 
 const teamMembers = [
     { id: 1, name: "Gökhan Özdemir", profession: "Project Manager", img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=300&fit=crop", linkedinUrl: "/test", instagramUrl: "/test", twitterUrl: "/test" },

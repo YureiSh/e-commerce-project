@@ -1,4 +1,4 @@
-import BlogPost from "../../../components/BlogPost";
+import BlogPost from "../../../components/Card-components/BlogPost";
 
 
 export const data = [

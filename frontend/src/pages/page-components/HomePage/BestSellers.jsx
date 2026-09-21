@@ -1,4 +1,4 @@
-import ProductCard from "../../../components/ProductCard";
+import ProductCard from "../../../components/Card-components/ProductCard";
 import { products } from "../../../constants/constants";
 
 function BestSellers() {

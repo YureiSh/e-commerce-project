@@ -1,6 +1,6 @@
 import { useState } from "react";
 import PageContent from "../layout/PageContent";
-import CartItem from '../components/CartItem';
+import CartItem from '../components/Card-components/CartItem';
 import { Link } from "react-router-dom";
 import CouponDiv from "./page-components/CartPage/CouponDiv";
 import { useDispatch, useSelector } from "react-redux";

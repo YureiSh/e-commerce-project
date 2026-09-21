@@ -16,6 +16,7 @@ import CartPage from './pages/CartPage';
 import OrderPage from './pages/OrderPage';
 import ProtectedRoute from './pages/auth-pages/ProtectedRoute';
 import OrderFinished from './pages/page-components/OrderPage/OrderFinished';
+import RenderMessage from './components/RenderMessage';
 
 function App() {
   const user = useSelector((store) => store.client.user);
@@ -25,29 +26,32 @@ function App() {
   if (authLoading) return <CustomGsapSpinner />;
 
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route exact path="/shop" component={ShopPage} />
-        <Route exact path="/shop/:gender/:categoryName/:categoryId/:productNameSlug/:productId" component={ProductPage} />
-        <Route exact path="/shop/:productNameSlug/:productId" component={ProductPage} />
-        <Route exact path="/shop/:gender/:categoryName/:categoryId" component={ShopPage} />
-        
-        <Route path="/contact" component={ContactPage} />
-        <Route path="/team" component={TeamPage} />
-        <Route path="/aboutus" component={AboutUsPage} />
-        
-        <Route path="/product/:id" component={ProductPage} />
-        <Route path="/signup" component={RegisterPage} />
-        <Route path="/login" component={LoginPage} />
+    <>
+      <RenderMessage />
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route exact path="/shop" component={ShopPage} />
+          <Route exact path="/shop/:gender/:categoryName/:categoryId/:productNameSlug/:productId" component={ProductPage} />
+          <Route exact path="/shop/:productNameSlug/:productId" component={ProductPage} />
+          <Route exact path="/shop/:gender/:categoryName/:categoryId" component={ShopPage} />
 
-        <ProtectedRoute exact path="/cart/order" component={OrderPage} />
-        <Route path="/cart" component={CartPage} />
-        
-        <Route exact path="/congrats" component={OrderFinished} />
+          <Route path="/contact" component={ContactPage} />
+          <Route path="/team" component={TeamPage} />
+          <Route path="/aboutus" component={AboutUsPage} />
 
-      </Switch>
-    </BrowserRouter>
+          <Route path="/product/:id" component={ProductPage} />
+          <Route path="/signup" component={RegisterPage} />
+          <Route path="/login" component={LoginPage} />
+
+          <ProtectedRoute exact path="/cart/order" component={OrderPage} />
+          <Route path="/cart" component={CartPage} />
+
+          <Route exact path="/congrats" component={OrderFinished} />
+
+        </Switch>
+      </BrowserRouter>
+    </>
   )
 }
 
