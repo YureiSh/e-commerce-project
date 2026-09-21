@@ -60,20 +60,20 @@ export const carouselImages = [
 
 export const editorsPick = [
   {
-    id: 1, url: new URL('../assets/EditorsPickImgs/maleEP.jpg', import.meta.url).href,
-    title: "Men", href: "/men"
+    id: 1, url: "https://images.unsplash.com/photo-1578681994506-b8f463449011?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    title: "Men", href: "/shop/e"
   },
   {
-    id: 2, url: new URL('../assets/EditorsPickImgs/womanEP.jpg', import.meta.url).href,
-    title: "Women", href: "/women"
+    id: 2, url: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    title: "Women", href: "/shop/k"
   },
   {
     id: 3, url: new URL('../assets/EditorsPickImgs/AccessoriesEP.jpg', import.meta.url).href,
-    title: "Accessories", href: "/accessories"
+    title: "Accessories", href: "/shop/e"
   },
   {
     id: 4, url: new URL('../assets/EditorsPickImgs/KidsEP.jpg', import.meta.url).href,
-    title: "Kids", href: "/kids"
+    title: "Kids", href: "/shop/e"
   },
 ]
 

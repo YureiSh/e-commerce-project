@@ -1,17 +1,25 @@
 import { useEffect, useRef, useState } from "react";
+<<<<<<< HEAD
 import ProductCard from "../../../components/Card-components/ProductCard";
 import { productsExtended } from "../../../constants/constants";
 import { ChevronLeft, ChevronRight, ListCheck, VectorSquare } from "lucide-react";
+=======
+import ProductCard from "../../../components/ProductCard";
+import { ChevronLeft, ChevronRight, LayoutGrid, List } from "lucide-react";
+>>>>>>> 805430605e94d228a9476b372c99c28fa4fae312
 import { useDispatch, useSelector } from "react-redux";
 import { FaMagnifyingGlass } from "react-icons/fa6";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation, Link } from "react-router-dom";
 import { fetchProducts, setOffset } from "../../../store/actions/productActions";
+import { useSlugify } from "../../../utils/useSlugify";
 
 function ShopProductList() {
     const [view, setView] = useState("imgView");
     const [sort, setSort] = useState("");
     const [query, setQuery] = useState("");
     const queryRef = useRef("");
+
+    const {pathname} = useLocation();
 
     const [isQueryVisible, setIsQueryVisible] = useState(false);
     const { productList, total, loading, limit, offset } = useSelector((store) => store.product);
@@ -60,11 +68,11 @@ function ShopProductList() {
                     <div className="">
                         <div className="flex gap-4 items-center">
                             <h6>Views: </h6>
-                            <button className="p-3 border" onClick={() => setView("imgView")}>
-                                <div><VectorSquare /></div>
+                            <button className="p-3 border rounded-md" onClick={() => setView("imgView")}>
+                                <div><LayoutGrid /></div>
                             </button>
-                            <button className="p-3 border" onClick={() => setView("listView")}>
-                                <div><ListCheck /></div>
+                            <button className="p-3 border rounded-md" onClick={() => setView("listView")}>
+                                <div><List /></div>
                             </button>
                         </div>
                     </div>
@@ -99,12 +107,42 @@ function ShopProductList() {
                 </div>
 
                 {productList ? (
-                    <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-400 m-auto px-16 md:px-0 mt-12 pb-12">
-                        {view === "imgView" ? (productList.map((item) => (
-                            <ProductCard key={item.id} item={item} />
-                        ))) : null}
-                    </div>
-                ) : (<p className="text-center pt-12 mb-12">Loading...</p>)}
+                    view === "imgView" ? (
+                        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-400 m-auto px-16 md:px-0 mt-12 pb-12">
+                            {productList.map((item) => (
+                                <ProductCard key={item.id} item={item} />
+                            ))}
+                        </div>
+                    ) : (
+                        <div className="flex flex-col gap-6 max-w-300 m-auto px-16 md:px-0 mt-12 pb-12">
+                            {productList.map((item) => (
+                                <Link key={item.id} to={`${pathname}/${useSlugify(item.name)}/${item.id}`}>
+                                    <div
+                                        
+                                        className="flex flex-col sm:flex-row gap-6 border border-[#e5e5e5] rounded-md p-4 hover:shadow-md transition"
+                                    >
+                                        <img
+                                            src={item.imageUrls?.[0] ?? item.images?.[0] ?? item.image}
+                                            alt={item.name}
+                                            className="w-full sm:w-48 h-48 object-cover rounded-md"
+                                        />
+                                        <div className="flex flex-col justify-center gap-2">
+                                            <h5 className="font-bold text-[#252b42]">{item.name}</h5>
+                                            <p className="text-[#737373] text-sm line-clamp-3">
+                                                {item.description}
+                                            </p>
+                                            <span className="font-bold text-primary">
+                                                {item.price} $
+                                            </span>
+                                        </div>
+                                    </div>
+                                </Link>
+                            ))}
+                        </div>
+                    )
+                ) : (
+                    <p className="text-center pt-12 mb-12">Loading...</p>
+                )}
 
                 <div className="flex justify-center gap-3 pb-12">
                     <button

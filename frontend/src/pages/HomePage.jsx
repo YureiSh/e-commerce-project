@@ -35,7 +35,7 @@ export default function HomePage() {
                         <div className=' flex gap-6 items-center'>
                             <span>$16.48</span>
                             <Link
-                                to="/test"
+                                to="/shop/e/vita-classic-product/1"
                                 className="px-4 lg:px-8 text-center py-4 bg-success text-white text-xl rounded-xs hover:bg-[#28A862] transition"
                             >
                                 ADD TO CART

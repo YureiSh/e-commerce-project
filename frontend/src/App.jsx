@@ -23,26 +23,28 @@ function App() {
 
   const { authLoading } = useAuthVerification();
 
-  if (authLoading) return <CustomGsapSpinner />;
+  // if (authLoading) return <CustomGsapSpinner />; Temporary disable
 
   return (
-    <>
-      <RenderMessage />
-      <BrowserRouter>
-        <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route exact path="/shop" component={ShopPage} />
-          <Route exact path="/shop/:gender/:categoryName/:categoryId/:productNameSlug/:productId" component={ProductPage} />
-          <Route exact path="/shop/:productNameSlug/:productId" component={ProductPage} />
-          <Route exact path="/shop/:gender/:categoryName/:categoryId" component={ShopPage} />
-
-          <Route path="/contact" component={ContactPage} />
-          <Route path="/team" component={TeamPage} />
-          <Route path="/aboutus" component={AboutUsPage} />
-
-          <Route path="/product/:id" component={ProductPage} />
-          <Route path="/signup" component={RegisterPage} />
-          <Route path="/login" component={LoginPage} />
+<>
+<RenderMessage/>
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/" component={HomePage} />
+        <Route exact path="/shop" component={ShopPage} />
+        <Route exact path="/shop/:gender/:categoryName/:categoryId/:productNameSlug/:productId" component={ProductPage} />
+        <Route exact path="/shop/:gender/:productNameSlug/:productId" component={ProductPage} />
+        <Route exact path="/shop/:productNameSlug/:productId" component={ProductPage} />
+        <Route exact path="/shop/:gender/:categoryName/:categoryId" component={ShopPage} />
+        <Route exact path="/shop/:gender" component={ShopPage} />
+        
+        <Route path="/contact" component={ContactPage} />
+        <Route path="/team" component={TeamPage} />
+        <Route path="/aboutus" component={AboutUsPage} />
+        
+        <Route path="/product/:id" component={ProductPage} />
+        <Route path="/signup" component={RegisterPage} />
+        <Route path="/login" component={LoginPage} />
 
           <ProtectedRoute exact path="/cart/order" component={OrderPage} />
           <Route path="/cart" component={CartPage} />

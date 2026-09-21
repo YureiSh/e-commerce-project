@@ -1,15 +1,18 @@
 import { Link } from "react-router-dom";
+<<<<<<< HEAD:frontend/src/components/Card-components/ProductCard.jsx
 import { useSlugify } from "../../utils/useSlugify";
 import { useLocation } from "react-router-dom";
+=======
+import { useSlugify } from "../utils/useSlugify";
+>>>>>>> 805430605e94d228a9476b372c99c28fa4fae312:frontend/src/components/ProductCard.jsx
 
 function ProductCard({ item, keepColorSelector = true }) {
     window.scrollTo(0, 0);
-    const {pathname} = useLocation();
    
     return (
         <div className="text-center">
             
-            <Link to={`${pathname}/${useSlugify(item.name)}/${item.id}`}>
+            <Link to={`/shop/${useSlugify(item.name)}/${item.id}`}>
                 <img src={item.imageUrls?.[0] || "https://picsum.photos/seed/prod8a/500/600"} className="w-full transition hover:scale-105" />
             </Link>
 
