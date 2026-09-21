@@ -9,7 +9,7 @@ import com.ecom.project.exception.CardException;
 import com.ecom.project.repository.OrdersRepository;
 import com.ecom.project.repository.ProductRepository;
 import jakarta.persistence.EntityNotFoundException;
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -24,6 +24,11 @@ public class OrderService {
     private final OrdersRepository ordersRepository;
     private final ProductRepository productRepository;
 
+    /**
+     * orderProducts LAZY oldugu icin okuma da islem icinde yapilir;
+     * aksi halde open-in-view kapatildiginda LazyInitializationException alinir.
+     */
+    @Transactional(readOnly = true)
     public List<OrderResponse> getAllOrders(User user){
         return ordersRepository
                 .findByUserId(user.getId())

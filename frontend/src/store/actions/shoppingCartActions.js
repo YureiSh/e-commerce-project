@@ -22,6 +22,8 @@ export const REMOVE_CART = "REMOVE_CART";
 export const TOGGLE_CHECK_CART = "TOGGLE_CHECK_CART";
 
 export const SET_ORDER = "SET_ORDER";
+export const SET_ORDER_HISTORY = "SET_ORDER_HISTORY";
+export const SET_ORDER_HISTORY_LOADING = "SET_ORDER_HISTORY_LOADING";
 export const SET_ORDER_ADDRESS = "SET_ORDER_ADDRESS";
 export const SET_ORDER_PAYMENT = "SET_ORDER_PAYMENT";
 export const SET_ORDER_PRODUCTS = "SET_ORDER_PRODUCTS";
@@ -211,6 +213,33 @@ export function setOrderProducts(products) {
     return {
         type: SET_ORDER_PRODUCTS,
         payload: products
+    }
+}
+
+/*Order history functions*/
+export function setOrderHistory(orders) {
+    return {
+        type: SET_ORDER_HISTORY,
+        payload: orders
+    }
+}
+
+export function setOrderHistoryLoading(loading) {
+    return {
+        type: SET_ORDER_HISTORY_LOADING,
+        payload: loading
+    }
+}
+
+export const fetchOrderHistory = () => async (dispatch) => {
+    dispatch(setOrderHistoryLoading(true));
+    try {
+        const result = await axios.get(`${BASE_URL}/order`);
+        dispatch(setOrderHistory(result.data ?? []));
+    } catch (error) {
+        toast.error(error?.response?.data?.message || "Something went wrong");
+    } finally {
+        dispatch(setOrderHistoryLoading(false));
     }
 }
 

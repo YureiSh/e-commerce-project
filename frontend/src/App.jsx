@@ -17,6 +17,7 @@ import OrderPage from './pages/OrderPage';
 import ProtectedRoute from './pages/auth-pages/ProtectedRoute';
 import OrderFinished from './pages/page-components/OrderPage/OrderFinished';
 import RenderMessage from './components/RenderMessage';
+import PurchaseHistoryPage from './pages/PurchaseHistoryPage';
 
 function App() {
   const user = useSelector((store) => store.client.user);
@@ -46,6 +47,13 @@ function App() {
         <Route path="/product/:id" component={ProductPage} />
         <Route path="/signup" component={RegisterPage} />
         <Route path="/login" component={LoginPage} />
+
+          <ProtectedRoute
+            exact
+            path="/orders"
+            component={PurchaseHistoryPage}
+            message="Log in to see your purchase history"
+          />
 
           <ProtectedRoute exact path="/cart/order" component={OrderPage} />
           <Route path="/cart" component={CartPage} />

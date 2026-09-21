@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { User, LogOut, ShoppingBag, Heart, Settings, ChevronDown, ChevronUp } from "lucide-react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logOutUser } from "../store/actions/clientActions";
 import { toast } from "react-toastify";
@@ -38,7 +38,17 @@ function DropdownMenu({ dropdownOpen, setDropdownOpen, dropdownRef }) {
                 </button>
 
                 {dropdownOpen && (
-                    <div className="absolute right-0 top-full mt-2 w-36 bg-white border border-gray-200 rounded-lg shadow-lg z-50 py-1">
+                    <div className="absolute right-0 top-full mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-50 py-1">
+                        <Link
+                            to="/orders"
+                            onClick={() => setDropdownOpen(false)}
+                            className="w-full flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+                        >
+                            <ShoppingBag size={14} /> Purchase History
+                        </Link>
+
+                        <div className="h-px bg-gray-100 my-1" />
+
                         <button
                             onClick={handleLogout}
                             className="w-full flex items-center gap-2 px-4 py-2 text-sm text-red-500 hover:bg-red-50"

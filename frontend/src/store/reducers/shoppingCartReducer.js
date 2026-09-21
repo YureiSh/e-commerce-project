@@ -1,10 +1,12 @@
-import { ADD_ADDRESS, ADD_PAYMENT, CHANGE_ADDRESS, CHANGE_PAYMENT, DECREASE_CART, INCREASE_CART, REMOVE_ADDRESS, REMOVE_CART, REMOVE_PAYMENT, RESET_CART, SET_ADDRESS, SET_CART, SET_ORDER, SET_ORDER_ADDRESS, SET_ORDER_PAYMENT, SET_ORDER_PRODUCTS, SET_PAYMENT, TOGGLE_CHECK_CART } from "../actions/shoppingCartActions";
+import { ADD_ADDRESS, ADD_PAYMENT, CHANGE_ADDRESS, CHANGE_PAYMENT, DECREASE_CART, INCREASE_CART, REMOVE_ADDRESS, REMOVE_CART, REMOVE_PAYMENT, RESET_CART, SET_ADDRESS, SET_CART, SET_ORDER, SET_ORDER_ADDRESS, SET_ORDER_HISTORY, SET_ORDER_HISTORY_LOADING, SET_ORDER_PAYMENT, SET_ORDER_PRODUCTS, SET_PAYMENT, TOGGLE_CHECK_CART } from "../actions/shoppingCartActions";
 
 const initialState = {
     cart: [],
     payment: [],
     address: [],
-    order: {}
+    order: {},
+    orderHistory: [],
+    orderHistoryLoading: false
 };
 
 export function shoppingCartReducer(state = initialState, action) {
@@ -111,6 +113,18 @@ export function shoppingCartReducer(state = initialState, action) {
             return {
                 ...state,
                 order: action.payload
+            }
+        }
+        case SET_ORDER_HISTORY: {
+            return {
+                ...state,
+                orderHistory: action.payload
+            }
+        }
+        case SET_ORDER_HISTORY_LOADING: {
+            return {
+                ...state,
+                orderHistoryLoading: action.payload
             }
         }
         case SET_ORDER_ADDRESS: {
