@@ -1,12 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-<<<<<<< HEAD
 import ProductCard from "../../../components/Card-components/ProductCard";
-import { productsExtended } from "../../../constants/constants";
-import { ChevronLeft, ChevronRight, ListCheck, VectorSquare } from "lucide-react";
-=======
-import ProductCard from "../../../components/ProductCard";
 import { ChevronLeft, ChevronRight, LayoutGrid, List } from "lucide-react";
->>>>>>> 805430605e94d228a9476b372c99c28fa4fae312
 import { useDispatch, useSelector } from "react-redux";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import { useParams, useLocation, Link } from "react-router-dom";

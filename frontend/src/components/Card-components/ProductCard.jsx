@@ -1,10 +1,5 @@
 import { Link } from "react-router-dom";
-<<<<<<< HEAD:frontend/src/components/Card-components/ProductCard.jsx
 import { useSlugify } from "../../utils/useSlugify";
-import { useLocation } from "react-router-dom";
-=======
-import { useSlugify } from "../utils/useSlugify";
->>>>>>> 805430605e94d228a9476b372c99c28fa4fae312:frontend/src/components/ProductCard.jsx
 
 function ProductCard({ item, keepColorSelector = true }) {
     window.scrollTo(0, 0);
